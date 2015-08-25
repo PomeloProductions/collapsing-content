@@ -6,7 +6,7 @@
  * Time: 5:22 PM
  */
 
-namespace MagicTimeLine\Model;
+namespace RulesRegulations\Model;
 
 
 use DateTime;
