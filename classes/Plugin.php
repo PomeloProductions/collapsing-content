@@ -1,6 +1,7 @@
 <?php
 namespace RulesRegulations;
 
+use RulesRegulations\Model\Rule;
 use WordWrap\LifeCycle;
 
 class Plugin extends LifeCycle {
@@ -53,6 +54,7 @@ class Plugin extends LifeCycle {
      * @return void
      */
     protected function installDatabaseTables() {
+        Rule::install_table();
     }
 
     /**
