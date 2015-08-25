@@ -1,0 +1,8 @@
+{
+  "pluginName" : "rules-regulations",
+  "rootNameSpace" : "RulesRegulations",
+  "LifeCycle" : {
+    "className" : "Plugin"
+  },
+  "optionsPrefix" : "rules_regulations"
+}
