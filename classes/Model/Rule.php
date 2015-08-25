@@ -49,6 +49,9 @@ class Rule extends BaseModel{
      */
     public $deleted_at;
 
+    /**
+     * @param Rule $rule to add to this instance
+     */
     private function addChild(Rule $rule) {
         $rule->parent = $this;
         $this->children[] = $rule;
