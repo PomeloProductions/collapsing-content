@@ -68,8 +68,8 @@ function noticePhpVersionWrong() {
     global $minimalRequiredPhpVersion;
     echo '<div class="updated fade">' .
         __('Error: plugin "Magic Timeline" requires a newer version of PHP to be running.',  'magic-timeline').
-        '<br/>' . __('Minimal version of PHP required: ', 'magic-timeline') . '<strong>' . $minimalRequiredPhpVersion . '</strong>' .
-        '<br/>' . __('Your server\'s PHP version: ', 'magic-timeline') . '<strong>' . phpversion() . '</strong>' .
+        '<br/>' . __('Minimal version of PHP required: ', 'rules-regulations') . '<strong>' . $minimalRequiredPhpVersion . '</strong>' .
+        '<br/>' . __('Your server\'s PHP version: ', 'rules-regulations') . '<strong>' . phpversion() . '</strong>' .
         '</div>';
 }
 
@@ -77,7 +77,7 @@ function noticePhpVersionWrong() {
 function PhpVersionCheck() {
     global $minimalRequiredPhpVersion;
     if (version_compare(phpversion(), $minimalRequiredPhpVersion) < 0) {
-        add_action('admin_notices', 'MagicTimeline_noticePhpVersionWrong');
+        add_action('admin_notices', 'PhpVersionCheck');
         return false;
     }
     return true;

@@ -77,11 +77,22 @@ class Plugin extends LifeCycle {
     public function upgrade() {
     }
 
+    protected function addSettingsSubMenuPageToPluginsMenu() {
+        $this->requireExtraPluginFiles();
+        $displayName = $this->getPluginDisplayName();
+        add_submenu_page('plugins.php',
+            $displayName,
+            $displayName,
+            'manage_options',
+            $this->getSettingsSlug(),
+            array(&$this, 'settingsPage'));
+    }
+
     public function addActionsAndFilters() {
 
         // Add options administration page
         // http://plugin.michael-simpson.com/?page_id=47
-        //   add_action('admin_menu', array(&$this, 'addSettingsSubMenuPage'));
+        add_action('admin_menu', array(&$this, 'addSettingsSubMenuPage'));
         //   $page_cat = \add_menu_page('Theme page title', 'Magic Time Line', 'manage_options', 'adminUI', 'adminUI', 'dashicons-images-alt2');
 
         // Example adding a script & style just for the options administration page
