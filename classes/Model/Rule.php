@@ -94,7 +94,7 @@ class Rule extends BaseModel{
     /**
      * @return Rule[] all entries for given timeline
      */
-    public static function find_all(){
+    public static function fetchAll(){
         $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL";
 
         global $wpdb;

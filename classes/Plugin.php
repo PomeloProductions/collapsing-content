@@ -91,7 +91,7 @@ class Plugin extends LifeCycle {
         //            wp_enqueue_style('my-style', plugins_url('/css/my-style.css', __FILE__));
         //        }
 
-    //    $this->assetManager->registerAssetType("html", __DIR__ . "/../assets/html/");
+        $this->assetManager->registerAssetType("html", __DIR__ . "/../assets/html/");
 
         // Add Actions & Filters
         // http://plugin.michael-simpson.com/?page_id=37
