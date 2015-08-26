@@ -106,8 +106,8 @@ class Plugin extends LifeCycle {
 
         // Register short codes
         // http://plugin.michael-simpson.com/?page_id=39
-    //    $sc = new TimeLineShortCode($this);
-    //    $sc->register('magic-timeline');
+        $sc = new TimeLineShortCode($this);
+        $sc->register('rules_regulations');
 
 
         // Register AJAX hooks
