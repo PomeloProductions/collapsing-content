@@ -11,10 +11,9 @@ namespace RulesRegulations;
 
 use RulesRegulations\Model\Rule;
 use WordWrap\ShortCodeScriptLoader;
-use WordWrap\View\View;
 use WordWrap\View\ViewCollection;
 
-class TimeLineShortCode extends ShortCodeScriptLoader{
+class ShortCode extends ShortCodeScriptLoader{
 
     /**
      * @param  $atts array inputs
