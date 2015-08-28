@@ -22,7 +22,7 @@ function has_word_wrap() {
         }
     }
 }
-add_action( 'admin_init', '\MagicTimeLine\has_word_wrap' );
+add_action( 'admin_init', '\RulesRegulations\has_word_wrap' );
 
 function child_plugin_notice(){
     ?><div class="error"><p>Sorry, but Child Plugin requires the Parent plugin to be installed and active.</p></div><?php
@@ -67,7 +67,7 @@ $minimalRequiredPhpVersion = '5.4';
 function noticePhpVersionWrong() {
     global $minimalRequiredPhpVersion;
     echo '<div class="updated fade">' .
-        __('Error: plugin "Magic Timeline" requires a newer version of PHP to be running.',  'magic-timeline').
+        __('Error: plugin "Rules Regulations" requires a newer version of PHP to be running.',  'rules-regulations').
         '<br/>' . __('Minimal version of PHP required: ', 'rules-regulations') . '<strong>' . $minimalRequiredPhpVersion . '</strong>' .
         '<br/>' . __('Your server\'s PHP version: ', 'rules-regulations') . '<strong>' . phpversion() . '</strong>' .
         '</div>';
