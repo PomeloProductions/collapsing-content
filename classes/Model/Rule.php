@@ -89,7 +89,7 @@ class Rule extends BaseModel{
      */
     public static function get_fields() {
         return [
-            "title" => "VARCHAR(120)",
+            "title" => "TEXT",
             "top_content" => "TEXT",
             "bottom_content" => "TEXT",
             "parent_id" => "INT(11) UNSIGNED",
