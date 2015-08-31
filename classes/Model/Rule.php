@@ -25,9 +25,14 @@ class Rule extends BaseModel{
     public $title;
 
     /**
-     * @var string the description of this entry
+     * @var string the content that goes above child rules
      */
-    public $description;
+    public $top_content;
+
+    /**
+     * @var string the content that goes below child rules
+     */
+    public $bottom_content;
 
     /**
      * @var int the parent id of this rule
@@ -85,7 +90,8 @@ class Rule extends BaseModel{
     public static function get_fields() {
         return [
             "title" => "VARCHAR(120)",
-            "description" => "TEXT",
+            "top_content" => "TEXT",
+            "bottom_content" => "TEXT",
             "parent_id" => "INT(11) UNSIGNED",
             "deleted_at" => "DATETIME"
         ];
