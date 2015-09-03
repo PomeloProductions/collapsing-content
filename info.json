@@ -5,7 +5,7 @@
     "className" : "Plugin"
   },
   "Admin" : {
-    "AdminMenus" : [
+    "AdminMenu" : [
       {
         "name" : "Rules Regulations",
         "icon" : "dashicons-carrot",
