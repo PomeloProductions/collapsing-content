@@ -9,16 +9,8 @@
 namespace RulesRegulations\Admin;
 
 
-use WordWrap\Admin\TaskController;
 
-class Create extends TaskController {
-
-    /**
-     * override to render the main page
-     */
-    public function renderMainContent() {
-        // TODO: Implement renderMainContent() method.
-    }
+class Create extends Edit {
 
     /**
      * override to render the main page
