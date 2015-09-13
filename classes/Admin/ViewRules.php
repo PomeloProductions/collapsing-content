@@ -1,11 +1,8 @@
 <?php
 namespace RulesRegulations\Admin;
 use RulesRegulations\Admin\View\RulesContainer;
-use RulesRegulations\Admin\View\RuleTR;
 use RulesRegulations\Model\Rule;
 use WordWrap\Admin\TaskController;
-use WordWrap\View\View;
-use WordWrap\View\ViewCollection;
 
 /**
  * Created by PhpStorm.
@@ -31,6 +28,7 @@ class ViewRules extends TaskController {
      * override to render the main page
      */
     public function renderMainContent() {
+
         $rulesContainer = new RulesContainer($this->lifeCycle, $this->topLevelRules);
 
         return $rulesContainer->export();
