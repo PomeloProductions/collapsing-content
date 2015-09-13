@@ -47,8 +47,8 @@ class ShortCode extends ShortCodeScriptLoader{
             $collection->setTemplateVar("top_content", $rule->top_content);
             $collection->setTemplateVar("bottom_content", $rule->bottom_content);
 
-            if(count($rule->children))
-                $collection->addChildViews("children", $this->buildCollections($rule->children));
+            if(count($rule->getChildren()))
+                $collection->addChildViews("children", $this->buildCollections($rule->getChildren()));
 
             $collections[] = $collection;
         }

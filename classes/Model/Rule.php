@@ -47,7 +47,7 @@ class Rule extends BaseModel{
     /**
      * @var Rule[] the primary id of the time line
      */
-    public $children = [];
+    public $children = null;
 
     /**
      * @var DateTime when the object was deleted
@@ -58,8 +58,30 @@ class Rule extends BaseModel{
      * @param Rule $rule to add to this instance
      */
     private function addChild(Rule $rule) {
+        if($this->children == null)
+            $this->children = [];
+
         $rule->parent = $this;
         $this->children[] = $rule;
+    }
+
+    /**
+     * @return Rule[] all children of given rule
+     */
+    public function getChildren() {
+
+        if($this->children == null) {
+            $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` = " . $this->id;
+
+            global $wpdb;
+
+            $results = $wpdb->get_results($SQL);
+
+            foreach ($results as $row)
+                $this->addChild(new Rule($row));
+        }
+
+        return $this->children;
     }
 
     /**
