@@ -5,16 +5,28 @@
     "className" : "Plugin"
   },
   "Admin" : {
-    "AdminMenu" : [
+    "Page" : [
       {
         "name" : "Rules Regulations",
         "icon" : "dashicons-carrot",
         "capability" : "manage_options",
         "position" : 5,
         "Task" : [
-          {"name" : "view"},
-          {"name" : "edit"},
-          {"name" : "create"}
+          {
+            "name" : "View Rules",
+            "className" : "\\AdminTasks\\ViewRules",
+            "default" : true
+          },
+          {
+            "name" : "Edit",
+            "className" : "\\AdminTasks\\Edit",
+            "sidebar" : true
+          },
+          {
+            "name" : "Create",
+            "className" : "\\AdminTasks\\Create",
+            "sidebar" : true
+          }
         ]
       }
     ]
