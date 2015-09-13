@@ -14,17 +14,17 @@
         "Task" : [
           {
             "name" : "View Rules",
-            "className" : "\\AdminTasks\\ViewRules",
+            "className" : "\\Admin\\ViewRules",
             "default" : true
           },
           {
             "name" : "Edit",
-            "className" : "\\AdminTasks\\Edit",
+            "className" : "\\Admin\\Edit",
             "sidebar" : true
           },
           {
             "name" : "Create",
-            "className" : "\\AdminTasks\\Create",
+            "className" : "\\Admin\\Create",
             "sidebar" : true
           }
         ]
