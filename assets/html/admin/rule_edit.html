@@ -1,0 +1,10 @@
+<form method="post" action="admin.php?page=rules_regulations&task={{task}}{{id}}">
+    <div>
+        <label for="title">Title:</label>
+        <input class="text_area" type="text" id="title" name="title" value="{{title}}">
+    </div>
+    {{above_rules}}
+    {{rules}}
+    {{below_rules}}
+    <input type="submit" value="Save Slider" id="save-buttom" class="button button-primary button-large">
+</form>
