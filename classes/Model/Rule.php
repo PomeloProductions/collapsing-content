@@ -98,7 +98,7 @@ class Rule extends BaseModel{
     }
 
     /**
-     * @return Rule[] all entries for given timeline
+     * @return Rule[] all entries in the rules table
      */
     public static function fetchAll(){
         $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL";
@@ -115,6 +115,23 @@ class Rule extends BaseModel{
         $organizedRules = self::organizeRules($rules);
 
         return $organizedRules;
+    }
+
+    /**
+     * @return Rule[] all entries in the rules table that do not have a parent
+     */
+    public static function fetchAllParents() {
+        $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
+
+        global $wpdb;
+
+        $rows = $wpdb->get_results($SQL, ARRAY_A);
+
+        $rules = [];
+        foreach($rows as $row)
+            $rules[] = new Rule($row);
+
+        return $rules;
     }
 
     /**

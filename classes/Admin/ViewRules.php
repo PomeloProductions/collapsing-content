@@ -1,5 +1,6 @@
 <?php
-namespace RulesRegulations\AdminTasks;
+namespace RulesRegulations\Admin;
+use RulesRegulations\Admin\View\RuleTR;
 use RulesRegulations\Model\Rule;
 use WordWrap\Admin\TaskController;
 use WordWrap\View\View;
@@ -32,11 +33,12 @@ class ViewRules extends TaskController {
         $viewCollection = new ViewCollection($this->lifeCycle, "admin/view_container");
 
         foreach($this->topLevelRules as $rule) {
-            $view = new View($this->lifeCycle, "admin/rule_tr");
+            $view = new RuleTR($this->lifeCycle, $rule->id, $rule->title);
 
-            $view->setTemplateVar("name", $rule->title);
-            $view->setTemplateVar("id", $rule->id);
+            $viewCollection->addChildView("rules", $view);
         }
+
+        return $viewCollection->export();
     }
 
     /**

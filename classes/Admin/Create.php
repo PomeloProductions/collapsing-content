@@ -6,7 +6,7 @@
  * Time: 12:57 PM
  */
 
-namespace RulesRegulations\AdminTasks;
+namespace RulesRegulations\Admin;
 
 
 use WordWrap\Admin\TaskController;
