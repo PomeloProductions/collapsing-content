@@ -1,5 +1,6 @@
 <?php
 namespace RulesRegulations\Admin;
+use RulesRegulations\Admin\View\RulesContainer;
 use RulesRegulations\Admin\View\RuleTR;
 use RulesRegulations\Model\Rule;
 use WordWrap\Admin\TaskController;
@@ -30,15 +31,9 @@ class ViewRules extends TaskController {
      * override to render the main page
      */
     public function renderMainContent() {
-        $viewCollection = new ViewCollection($this->lifeCycle, "admin/view_container");
+        $rulesContainer = new RulesContainer($this->lifeCycle, $this->topLevelRules);
 
-        foreach($this->topLevelRules as $rule) {
-            $view = new RuleTR($this->lifeCycle, $rule->id, $rule->title);
-
-            $viewCollection->addChildView("rules", $view);
-        }
-
-        return $viewCollection->export();
+        return $rulesContainer->export();
     }
 
     /**
