@@ -20,7 +20,7 @@ class RulesContainer extends ViewCollection {
      * @param Rule[] $rules
      * @param Rule|null $parent the parent Rule
      */
-    public function __constructor(LifeCycle $lifeCycle, $rules, Rule $parent = null) {
+    public function __construct(LifeCycle $lifeCycle, $rules, Rule $parent = null) {
         parent::__construct($lifeCycle, "admin/rules_container");
 
         foreach($rules as $rule) {
