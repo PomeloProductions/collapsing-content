@@ -1,4 +1,4 @@
-processRequest<?php
+<?php
 namespace RulesRegulations\Admin;
 use RulesRegulations\Admin\View\RulesContainer;
 use RulesRegulations\Model\Rule;
