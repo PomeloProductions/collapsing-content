@@ -26,7 +26,8 @@
           {
             "name" : "Create Rule",
             "className" : "\\Admin\\Create",
-            "sidebar" : true
+            "sidebar" : true,
+            "actions" : ["create"]
           }
         ]
       }
