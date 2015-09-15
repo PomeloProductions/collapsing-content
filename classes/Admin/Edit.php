@@ -48,9 +48,9 @@ class Edit extends TaskController{
             if (isset($_POST["title"]))
                 $this->rule->title = $_POST["title"];
             if (isset($_POST["above_rules"]))
-                $this->rule->title = $_POST["above_rules"];
+                $this->rule->top_content = $_POST["above_rules"];
             if (isset($_POST["below_rules"]))
-                $this->rule->title = $_POST["below_rules"];
+                $this->rule->bottom_content = $_POST["below_rules"];
 
             $this->rule->save();
 
