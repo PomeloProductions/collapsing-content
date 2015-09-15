@@ -43,6 +43,19 @@ class Edit extends TaskController{
      */
     protected function handlePost() {
 
+        if(isset($_POST["title"]))
+            $this->rule->title = $_POST["title"];
+        if(isset($_POST["above_rules"]))
+            $this->rule->title = $_POST["above_rules"];
+        if(isset($_POST["below_rules"]))
+            $this->rule->title = $_POST["below_rules"];
+
+        $this->rule->save();
+
+        if($this->rule->getParent())
+            header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
+        else
+            header("Location: admin.php?page=rules_regulations&task=view_rules");
     }
 
     /**
