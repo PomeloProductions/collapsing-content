@@ -22,7 +22,7 @@ class Create extends Edit {
     /**
      * override this to setup anything that needs to be done before
      */
-    public function setup() {
+    public function processRequest() {
         // TODO: Implement setup() method.
     }
 }

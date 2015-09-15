@@ -1,4 +1,4 @@
-<?php
+processRequest<?php
 namespace RulesRegulations\Admin;
 use RulesRegulations\Admin\View\RulesContainer;
 use RulesRegulations\Model\Rule;
@@ -20,7 +20,7 @@ class ViewRules extends TaskController {
     /**
      * override this to setup anything that needs to be done before
      */
-    public function setup() {
+    public function processRequest() {
         $this->topLevelRules = Rule::fetchAllParents();
     }
 

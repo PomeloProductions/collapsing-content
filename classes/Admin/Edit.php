@@ -26,7 +26,7 @@ class Edit extends TaskController{
     /**
      * override this to setup anything that needs to be done before
      */
-    public function setup() {
+    public function processRequest() {
         if(!isset($_GET["id"]) || $_GET["id"] == "")
             wp_redirect("admin.php?page=rules_regulations&task=view");
 
