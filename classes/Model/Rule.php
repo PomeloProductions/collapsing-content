@@ -71,6 +71,8 @@ class Rule extends BaseModel{
     public function getChildren() {
 
         if($this->children == null) {
+            $this->children = [];
+
             $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` = " . $this->id;
 
             global $wpdb;
