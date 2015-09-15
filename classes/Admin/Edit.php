@@ -88,4 +88,16 @@ class Edit extends TaskController{
     public function renderSidebarContent() {
         // TODO: Implement renderSidebarContent() method.
     }
+
+    /**
+     * @return string sets the custom task name for editing this task
+     */
+    public function getTaskName() {
+        $taskName = parent::getTaskName();
+
+        if(isset($this->rule) && $this->rule->id)
+            $taskName .= " #" . $this->rule->id;
+
+        return $taskName;
+    }
 }
