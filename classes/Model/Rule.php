@@ -37,7 +37,7 @@ class Rule extends BaseModel{
     /**
      * @var int the parent id of this rule
      */
-    public $parent_id;
+    public $parent_id = null;
 
     /**
      * @var Rule the parent instance
@@ -52,7 +52,7 @@ class Rule extends BaseModel{
     /**
      * @var DateTime when the object was deleted
      */
-    public $deleted_at;
+    public $deleted_at = null;
 
     /**
      * @param Rule $rule to add to this instance
