@@ -32,6 +32,17 @@ class Edit extends TaskController{
 
         $this->rule = Rule::find_one($_GET["id"]);
 
+        if(isset($_POST)) {
+            $this->handlePost();
+        }
+
+    }
+
+    /**
+     * By default this will attempt to edit this post
+     */
+    protected function handlePost() {
+
     }
 
     /**
