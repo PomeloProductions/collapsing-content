@@ -20,7 +20,8 @@
           {
             "name" : "Edit Rule",
             "className" : "\\Admin\\Edit",
-            "sidebar" : true
+            "sidebar" : true,
+            "actions" : ["edit"]
           },
           {
             "name" : "Create Rule",
