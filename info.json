@@ -18,12 +18,12 @@
             "default" : true
           },
           {
-            "name" : "Edit",
+            "name" : "Edit Rule",
             "className" : "\\Admin\\Edit",
             "sidebar" : true
           },
           {
-            "name" : "Create",
+            "name" : "Create Rule",
             "className" : "\\Admin\\Create",
             "sidebar" : true
           }
