@@ -24,6 +24,11 @@ class Edit extends TaskController{
     private $rule;
 
     /**
+     * @var string the action the user is attempting to carry out
+     */
+    protected $action = "edit";
+
+    /**
      * override this to setup anything that needs to be done before
      * @param $action null|string the action the is attempting if any
      */
@@ -34,31 +39,33 @@ class Edit extends TaskController{
         $this->rule = Rule::find_one($_GET["id"]);
 
         if($action)
-            $this->handlePost($action);
+            $this->handlePost();
 
     }
 
     /**
      * By default this will attempt to edit this post
-     * @param $action string the action to carry out
      */
-    protected function handlePost($action) {
+    protected function handlePost() {
 
-        if($action == "edit") {
-            if (isset($_POST["title"]))
-                $this->rule->title = $_POST["title"];
-            if (isset($_POST["above_rules"]))
-                $this->rule->top_content = $_POST["above_rules"];
-            if (isset($_POST["below_rules"]))
-                $this->rule->bottom_content = $_POST["below_rules"];
+        if(!$this->rule)
+            $this->rule = Rule::create([]);
 
-            $this->rule->save();
+        if (isset($_POST["title"]))
+            $this->rule->title = $_POST["title"];
+        if (isset($_POST["above_rules"]))
+            $this->rule->top_content = $_POST["above_rules"];
+        if (isset($_POST["below_rules"]))
+            $this->rule->bottom_content = $_POST["below_rules"];
+        if (isset($_POST["parent"]) && $_POST["parent"] != "")
+            $this->rule->parent_id = $_POST["parent"];
 
-            if ($this->rule->getParent())
-                header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
-            else
-                header("Location: admin.php?page=rules_regulations&task=view_rules");
-        }
+        $this->rule->save();
+
+        if ($this->rule->getParent())
+            header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
+        else
+            header("Location: admin.php?page=rules_regulations&task=view_rules");
     }
 
     /**
@@ -77,6 +84,8 @@ class Edit extends TaskController{
 
         $childrenRules = [];
 
+        $parent = null;
+
         if(isset($this->rule)) {
             $title = $this->rule->title;
             $id = "&id=" . $this->rule->id;
@@ -84,6 +93,9 @@ class Edit extends TaskController{
             $belowRules = $this->rule->bottom_content;
 
             $childrenRules = $this->rule->getChildren();
+
+            if($this->rule->getParent())
+                $parent = $this->rule->getParent()->id;
         }
 
         if(isset($_POST["title"]))
@@ -92,6 +104,9 @@ class Edit extends TaskController{
             $aboveRules = $_POST["above_rules"];
         if(isset($_POST["below_rules"]))
             $belowRules = $_POST["below_rules"];
+
+        if(isset($_GET["parent_id"]) && $_GET["parent_id"])
+            $parent = $_GET["parent_id"];
 
         $view->setTemplateVar("title", $title);
         $view->setTemplateVar("id", $id);
@@ -106,6 +121,10 @@ class Edit extends TaskController{
 
         $rulesContainer = new RulesContainer($this->lifeCycle, $childrenRules, $this->rule);
         $view->setTemplateVar("rules", $rulesContainer->export());
+
+        $view->setTemplateVar("action", $this->action);
+        if($parent)
+            $view->setTemplateVar("parent", $parent);
 
         return $view->export();
 
