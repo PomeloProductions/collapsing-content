@@ -25,37 +25,40 @@ class Edit extends TaskController{
 
     /**
      * override this to setup anything that needs to be done before
+     * @param $action null|string the action the is attempting if any
      */
-    public function processRequest() {
+    public function processRequest($action =  null) {
         if(!isset($_GET["id"]) || $_GET["id"] == "")
             wp_redirect("admin.php?page=rules_regulations&task=view");
 
         $this->rule = Rule::find_one($_GET["id"]);
 
-        if(isset($_POST)) {
-            $this->handlePost();
-        }
+        if($action)
+            $this->handlePost($action);
 
     }
 
     /**
      * By default this will attempt to edit this post
+     * @param $action string the action to carry out
      */
-    protected function handlePost() {
+    protected function handlePost($action) {
 
-        if(isset($_POST["title"]))
-            $this->rule->title = $_POST["title"];
-        if(isset($_POST["above_rules"]))
-            $this->rule->title = $_POST["above_rules"];
-        if(isset($_POST["below_rules"]))
-            $this->rule->title = $_POST["below_rules"];
+        if($action == "edit") {
+            if (isset($_POST["title"]))
+                $this->rule->title = $_POST["title"];
+            if (isset($_POST["above_rules"]))
+                $this->rule->title = $_POST["above_rules"];
+            if (isset($_POST["below_rules"]))
+                $this->rule->title = $_POST["below_rules"];
 
-        $this->rule->save();
+            $this->rule->save();
 
-        if($this->rule->getParent())
-            header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
-        else
-            header("Location: admin.php?page=rules_regulations&task=view_rules");
+            if ($this->rule->getParent())
+                header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
+            else
+                header("Location: admin.php?page=rules_regulations&task=view_rules");
+        }
     }
 
     /**
