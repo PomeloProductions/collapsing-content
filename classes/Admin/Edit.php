@@ -81,9 +81,11 @@ class Edit extends TaskController{
         $view->setTemplateVar("id", $id);
 
         $aboveEditor = new Editor($this->lifeCycle, "above_rules", $aboveRules, "Above Children Rules");
+        $aboveEditor->setHeight(300);
         $view->setTemplateVar("above_rules", $aboveEditor->export());
 
         $belowEditor = new Editor($this->lifeCycle, "below_rules", $belowRules, "Below Children Rules");
+        $belowEditor->setHeight(300);
         $view->setTemplateVar("below_rules", $belowEditor->export());
 
         $rulesContainer = new RulesContainer($this->lifeCycle, $childrenRules, $this->rule);
