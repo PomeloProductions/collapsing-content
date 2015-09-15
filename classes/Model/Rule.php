@@ -42,7 +42,7 @@ class Rule extends BaseModel{
     /**
      * @var Rule the parent instance
      */
-    public $parent;
+    public $parent = null;
 
     /**
      * @var Rule[] the primary id of the time line
@@ -63,6 +63,13 @@ class Rule extends BaseModel{
 
         $rule->parent = $this;
         $this->children[] = $rule;
+    }
+
+    public function getParent() {
+        if($this->parent == null && $this->parent_id)
+            $this->parent = Rule::find_one($this->parent_id);
+
+        return $this->parent;
     }
 
     /**
