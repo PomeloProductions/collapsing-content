@@ -75,7 +75,7 @@ class Rule extends BaseModel{
 
             global $wpdb;
 
-            $results = $wpdb->get_results($SQL);
+            $results = $wpdb->get_results($SQL, ARRAY_A);
 
             foreach ($results as $row)
                 $this->addChild(new Rule($row));
