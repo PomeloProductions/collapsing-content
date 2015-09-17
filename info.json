@@ -31,14 +31,16 @@
             {
               "name" : "Edit Rule",
               "className" : "\\Admin\\Edit",
-              "sidebar" : true,
               "actions" : ["edit"]
             },
             {
               "name" : "Create Rule",
               "className" : "\\Admin\\Create",
-              "sidebar" : true,
               "actions" : ["create"]
+            },
+            {
+              "name" : "Delete",
+              "className" : "\\Admin\\Delete"
             }
           ]
         }
