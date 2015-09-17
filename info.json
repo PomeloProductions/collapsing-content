@@ -3,6 +3,12 @@
   "rootNameSpace" : "RulesRegulations",
   "LifeCycle" : {
     "className" : "Plugin",
+    "AssetLocation" : [
+      {
+        "type" : "css",
+        "location" : "asset/css"
+      }
+    ],
     "Admin" : {
       "Page" : [
         {
