@@ -5,3 +5,15 @@
 .wp-list-table tbody tr:nth-child(even) {
     background: white;
 }
+
+div#post-body-content {
+    width: 95%;
+}
+
+.editor_block {
+    margin: 20px 0;
+}
+
+.button-secondary {
+    margin: 10px 0 !important;
+}
