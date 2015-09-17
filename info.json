@@ -6,7 +6,7 @@
     "AssetLocation" : [
       {
         "type" : "css",
-        "location" : "asset/css"
+        "location" : "assets/css"
       }
     ],
     "Admin" : {
