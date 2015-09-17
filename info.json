@@ -10,6 +10,12 @@
       }
     ],
     "Admin" : {
+      "RequiredAssets" : [
+        {
+          "type" : "css",
+          "name" : "admin"
+        }
+      ],
       "Page" : [
         {
           "name" : "Rules Regulations",
