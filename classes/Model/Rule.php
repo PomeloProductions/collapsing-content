@@ -65,6 +65,9 @@ class Rule extends BaseModel{
         $this->children[] = $rule;
     }
 
+    /**
+     * @return Rule|null the parent rule of null if none
+     */
     public function getParent() {
         if($this->parent == null && $this->parent_id)
             $this->parent = Rule::find_one($this->parent_id);
@@ -91,6 +94,15 @@ class Rule extends BaseModel{
         }
 
         return $this->children;
+    }
+
+    /**
+     * Overrides parent function sets this objects deleted at field to be now, and then saves
+     */
+    public function delete() {
+        $this->deleted_at = new DateTime();
+
+        $this->save();
     }
 
     /**
