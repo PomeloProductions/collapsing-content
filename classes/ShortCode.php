@@ -10,8 +10,8 @@ namespace RulesRegulations;
 
 
 use RulesRegulations\Model\Rule;
+use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
-use WordWrap\View\ViewCollection;
 
 class ShortCode extends ShortCodeScriptLoader{
 

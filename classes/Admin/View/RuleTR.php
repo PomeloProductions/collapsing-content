@@ -1,7 +1,7 @@
 <?php
 
 namespace RulesRegulations\Admin\View;
-use WordWrap\View\View;
+use WordWrap\Assets\View\View;
 
 /**
  * Created by PhpStorm.

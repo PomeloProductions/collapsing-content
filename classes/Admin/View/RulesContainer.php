@@ -10,8 +10,8 @@ namespace RulesRegulations\Admin\View;
 
 
 use RulesRegulations\Model\Rule;
+use WordWrap\Assets\View\ViewCollection;
 use WordWrap\LifeCycle;
-use WordWrap\View\ViewCollection;
 
 class RulesContainer extends ViewCollection {
 

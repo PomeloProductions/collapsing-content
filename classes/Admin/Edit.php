@@ -12,9 +12,8 @@ namespace RulesRegulations\Admin;
 use RulesRegulations\Admin\View\RulesContainer;
 use RulesRegulations\Model\Rule;
 use WordWrap\Admin\TaskController;
-use WordWrap\View\Editor;
-use WordWrap\View\View;
-use WordWrap\View\ViewCollection;
+use WordWrap\Assets\View\Editor;
+use WordWrap\Assets\View\View;
 
 class Edit extends TaskController{
 
