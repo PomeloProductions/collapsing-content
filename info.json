@@ -2,36 +2,36 @@
   "pluginName" : "rules-regulations",
   "rootNameSpace" : "RulesRegulations",
   "LifeCycle" : {
-    "className" : "Plugin"
-  },
-  "Admin" : {
-    "Page" : [
-      {
-        "name" : "Rules Regulations",
-        "icon" : "dashicons-carrot",
-        "capability" : "manage_options",
-        "position" : 5,
-        "Task" : [
-          {
-            "name" : "View Rules",
-            "className" : "\\Admin\\ViewRules",
-            "default" : true
-          },
-          {
-            "name" : "Edit Rule",
-            "className" : "\\Admin\\Edit",
-            "sidebar" : true,
-            "actions" : ["edit"]
-          },
-          {
-            "name" : "Create Rule",
-            "className" : "\\Admin\\Create",
-            "sidebar" : true,
-            "actions" : ["create"]
-          }
-        ]
-      }
-    ]
-  },
-  "optionsPrefix" : "rules_regulations"
+    "className" : "Plugin",
+    "Admin" : {
+      "Page" : [
+        {
+          "name" : "Rules Regulations",
+          "icon" : "dashicons-carrot",
+          "capability" : "manage_options",
+          "position" : 5,
+          "Task" : [
+            {
+              "name" : "View Rules",
+              "className" : "\\Admin\\ViewRules",
+              "default" : true
+            },
+            {
+              "name" : "Edit Rule",
+              "className" : "\\Admin\\Edit",
+              "sidebar" : true,
+              "actions" : ["edit"]
+            },
+            {
+              "name" : "Create Rule",
+              "className" : "\\Admin\\Create",
+              "sidebar" : true,
+              "actions" : ["create"]
+            }
+          ]
+        }
+      ]
+    },
+    "optionsPrefix" : "rules_regulations"
+  }
 }
