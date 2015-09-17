@@ -1,0 +1,7 @@
+.wp-list-table tbody tr:nth-child(odd) {
+    background: #eee;
+}
+
+.wp-list-table tbody tr:nth-child(even) {
+    background: white;
+}
