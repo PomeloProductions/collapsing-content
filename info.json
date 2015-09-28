@@ -18,7 +18,7 @@
       ],
       "Page" : [
         {
-          "name" : "Rules Regulations",
+          "name" : "Content Folder",
           "icon" : "dashicons-carrot",
           "capability" : "manage_options",
           "position" : 21,
