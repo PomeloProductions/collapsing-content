@@ -38,11 +38,11 @@ class Plugin extends LifeCycle {
     }
 
     public function getPluginDisplayName() {
-        return 'Rules and Regulations';
+        return 'Collapsing Content';
     }
 
     protected function getMainPluginFileName() {
-        return 'rules-regulations.php';
+        return 'collapsing-content.php';
     }
 
     /**
@@ -118,7 +118,7 @@ class Plugin extends LifeCycle {
         // Register short codes
         // http://plugin.michael-simpson.com/?page_id=39
         $sc = new ShortCode($this);
-        $sc->register('rules_regulations');
+        $sc->register('collapsing_content');
 
 
         // Register AJAX hooks
