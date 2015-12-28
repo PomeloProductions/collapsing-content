@@ -25,7 +25,7 @@
           "Task" : [
             {
               "name" : "View Entries",
-              "className" : "\\Admin\\ViewRules",
+              "className" : "\\Admin\\ViewEntries",
               "default" : true
             },
             {
