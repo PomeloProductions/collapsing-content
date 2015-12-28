@@ -12,7 +12,7 @@ use WordWrap\Assets\View\View;
 class EntryTR extends View{
 
     public function __construct($lifeCycle, $id, $name) {
-        parent::__construct($lifeCycle, "admin/rule_tr");
+        parent::__construct($lifeCycle, "admin/entry_tr");
 
         $this->setTemplateVar("id", $id);
         $this->setTemplateVar("name", $name);

@@ -24,12 +24,12 @@ class Delete extends TaskController {
         if(!$id)
             header("Location: admin.php?page=collapsing_content&task=view_entries");
 
-        $rule = Entry::find_one($id);
+        $entry = Entry::find_one($id);
 
-        $rule->delete();
+        $entry->delete();
 
-        if($rule->getParent())
-            header("Location: admin.php?page=collapsing_content&task=edit_entry&id=" . $rule->getParent()->id);
+        if($entry->getParent())
+            header("Location: admin.php?page=collapsing_content&task=edit_entry&id=" . $entry->getParent()->id);
         else
             header("Location: admin.php?page=collapsing_content&task=view_entries");
     }
