@@ -1,6 +1,6 @@
 <?php
 
-namespace RulesRegulations\Admin\View;
+namespace CoillapsingContent\Admin\View;
 use WordWrap\Assets\View\View;
 
 /**

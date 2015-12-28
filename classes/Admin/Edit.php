@@ -6,11 +6,11 @@
  * Time: 12:56 PM
  */
 
-namespace RulesRegulations\Admin;
+namespace CoillapsingContent\Admin;
 
 
-use RulesRegulations\Admin\View\RulesContainer;
-use RulesRegulations\Model\Rule;
+use CoillapsingContent\Admin\View\RulesContainer;
+use CoillapsingContent\Model\Rule;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\View\Editor;
 use WordWrap\Assets\View\View;

@@ -6,10 +6,10 @@
  * Time: 1:25 AM
  */
 
-namespace RulesRegulations\Admin\View;
+namespace CoillapsingContent\Admin\View;
 
 
-use RulesRegulations\Model\Rule;
+use CoillapsingContent\Model\Rule;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\LifeCycle;
 

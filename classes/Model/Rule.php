@@ -6,7 +6,7 @@
  * Time: 5:22 PM
  */
 
-namespace RulesRegulations\Model;
+namespace CoillapsingContent\Model;
 
 
 use DateTime;

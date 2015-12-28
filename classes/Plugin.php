@@ -1,7 +1,7 @@
 <?php
-namespace RulesRegulations;
+namespace CoillapsingContent;
 
-use RulesRegulations\Model\Rule;
+use CoillapsingContent\Model\Rule;
 use WordWrap\LifeCycle;
 
 class Plugin extends LifeCycle {

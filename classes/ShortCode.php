@@ -6,10 +6,10 @@
  * Time: 8:15 PM
  */
 
-namespace RulesRegulations;
+namespace CoillapsingContent;
 
 
-use RulesRegulations\Model\Rule;
+use CoillapsingContent\Model\Rule;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
 
