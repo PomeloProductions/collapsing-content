@@ -9,7 +9,7 @@ use WordWrap\Assets\View\View;
  * Date: 9/12/15
  * Time: 11:21 PM
  */
-class RuleTR extends View{
+class EntryTR extends View{
 
     public function __construct($lifeCycle, $id, $name) {
         parent::__construct($lifeCycle, "admin/rule_tr");

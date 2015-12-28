@@ -9,7 +9,7 @@
 namespace CollapsingContent;
 
 
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Model\Entry;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
 
@@ -21,7 +21,7 @@ class ShortCode extends ShortCodeScriptLoader{
      */
     public function handleShortcode($atts) {
 
-        $rules = Rule::fetchAll();
+        $rules = Entry::fetchAll();
 
         $collections = $this->buildCollections($rules);
 
@@ -34,7 +34,7 @@ class ShortCode extends ShortCodeScriptLoader{
     }
 
     /**
-     * @param $rules Rule[]
+     * @param $rules Entry[]
      * @return ViewCollection[]
      */
     private function buildCollections($rules) {

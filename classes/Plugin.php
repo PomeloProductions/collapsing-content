@@ -1,7 +1,7 @@
 <?php
 namespace CollapsingContent;
 
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Model\Entry;
 use WordWrap\LifeCycle;
 
 class Plugin extends LifeCycle {
@@ -54,7 +54,7 @@ class Plugin extends LifeCycle {
      * @return void
      */
     protected function installDatabaseTables() {
-        Rule::install_table();
+        Entry::install_table();
     }
 
     /**

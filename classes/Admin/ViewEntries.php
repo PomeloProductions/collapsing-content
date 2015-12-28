@@ -1,7 +1,7 @@
 <?php
 namespace CollapsingContent\Admin;
-use CollapsingContent\Admin\View\RulesContainer;
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Admin\View\EntriesContainer;
+use CollapsingContent\Model\Entry;
 use WordWrap\Admin\TaskController;
 
 /**
@@ -10,19 +10,19 @@ use WordWrap\Admin\TaskController;
  * Date: 9/12/15
  * Time: 12:47 PM
  */
-class ViewRules extends TaskController {
+class ViewEntries extends TaskController {
 
     /**
-     * @var Rule[] all top level rules that exist
+     * @var Entry[] all top level entries that exist
      */
-    private $topLevelRules = [];
+    private $topLevelEntries = [];
 
     /**
      * override this to setup anything that needs to be done before
      * @param $action null|string the action that is being processed
      */
     public function processRequest($action = null) {
-        $this->topLevelRules = Rule::fetchAllParents();
+        $this->topLevelEntries = Entry::fetchAllParents();
     }
 
     /**
@@ -30,9 +30,9 @@ class ViewRules extends TaskController {
      */
     public function renderMainContent() {
 
-        $rulesContainer = new RulesContainer($this->lifeCycle, $this->topLevelRules);
+        $entriesContainer = new EntriesContainer($this->lifeCycle, $this->topLevelEntries);
 
-        return $rulesContainer->export();
+        return $entriesContainer->export();
     }
 
     /**

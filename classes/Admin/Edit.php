@@ -9,8 +9,8 @@
 namespace CollapsingContent\Admin;
 
 
-use CollapsingContent\Admin\View\RulesContainer;
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Admin\View\EntriesContainer;
+use CollapsingContent\Model\Entry;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\View\Editor;
 use WordWrap\Assets\View\View;
@@ -18,7 +18,7 @@ use WordWrap\Assets\View\View;
 class Edit extends TaskController{
 
     /**
-     * @var Rule the rule that is currently being edited
+     * @var Entry the rule that is currently being edited
      */
     private $rule;
 
@@ -33,9 +33,9 @@ class Edit extends TaskController{
      */
     public function processRequest($action =  null) {
         if(!isset($_GET["id"]) || $_GET["id"] == "")
-            wp_redirect("admin.php?page=rules_regulations&task=view");
+            wp_redirect("admin.php?page=collapsing_content&task=view");
 
-        $this->rule = Rule::find_one($_GET["id"]);
+        $this->rule = Entry::find_one($_GET["id"]);
 
         if($action)
             $this->handlePost();
@@ -48,23 +48,23 @@ class Edit extends TaskController{
     protected function handlePost() {
 
         if(!$this->rule)
-            $this->rule = Rule::create([]);
+            $this->rule = Entry::create([]);
 
         if (isset($_POST["title"]))
             $this->rule->title = $_POST["title"];
-        if (isset($_POST["above_rules"]))
-            $this->rule->top_content = $_POST["above_rules"];
-        if (isset($_POST["below_rules"]))
-            $this->rule->bottom_content = $_POST["below_rules"];
+        if (isset($_POST["above_entries"]))
+            $this->rule->top_content = $_POST["above_entries"];
+        if (isset($_POST["below_entries"]))
+            $this->rule->bottom_content = $_POST["below_entries"];
         if (isset($_POST["parent"]) && $_POST["parent"] != "")
             $this->rule->parent_id = $_POST["parent"];
 
         $this->rule->save();
 
         if ($this->rule->getParent())
-            header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $this->rule->getParent()->id);
+            header("Location: admin.php?page=collapsing_content&task=edit_entry&id=" . $this->rule->getParent()->id);
         else
-            header("Location: admin.php?page=rules_regulations&task=view_rules");
+            header("Location: admin.php?page=collapsing_content&task=view_entries");
     }
 
     /**
@@ -72,26 +72,26 @@ class Edit extends TaskController{
      */
     public function renderMainContent() {
 
-        $view = new View($this->lifeCycle, "admin/rule_edit");
+        $view = new View($this->lifeCycle, "admin/entry_edit");
 
         $view->setTemplateVar("task", $this->task->getSlug());
 
         $title = "";
         $id = "";
-        $aboveRules = "";
-        $belowRules = "";
+        $aboveEntries = "";
+        $belowEntries = "";
 
-        $childrenRules = [];
+        $childrenEntries = [];
 
         $parent = null;
 
         if(isset($this->rule)) {
             $title = $this->rule->title;
             $id = "&id=" . $this->rule->id;
-            $aboveRules = $this->rule->top_content;
-            $belowRules = $this->rule->bottom_content;
+            $aboveEntries = $this->rule->top_content;
+            $belowEntries = $this->rule->bottom_content;
 
-            $childrenRules = $this->rule->getChildren();
+            $childrenEntries = $this->rule->getChildren();
 
             if($this->rule->getParent())
                 $parent = $this->rule->getParent()->id;
@@ -99,10 +99,10 @@ class Edit extends TaskController{
 
         if(isset($_POST["title"]))
             $title = $_POST["title"];
-        if(isset($_POST["above_rules"]))
-            $aboveRules = $_POST["above_rules"];
-        if(isset($_POST["below_rules"]))
-            $belowRules = $_POST["below_rules"];
+        if(isset($_POST["above_entries"]))
+            $aboveEntries = $_POST["above_entries"];
+        if(isset($_POST["below_entries"]))
+            $belowEntries = $_POST["below_entries"];
 
         if(isset($_GET["parent_id"]) && $_GET["parent_id"])
             $parent = $_GET["parent_id"];
@@ -110,16 +110,16 @@ class Edit extends TaskController{
         $view->setTemplateVar("title", $title);
         $view->setTemplateVar("id", $id);
 
-        $aboveEditor = new Editor($this->lifeCycle, "above_rules", $aboveRules, "Above Children Rules");
+        $aboveEditor = new Editor($this->lifeCycle, "above_entries", $aboveEntries, "Above Children Entries");
         $aboveEditor->setHeight(300);
-        $view->setTemplateVar("above_rules", $aboveEditor->export());
+        $view->setTemplateVar("above_entries", $aboveEditor->export());
 
-        $belowEditor = new Editor($this->lifeCycle, "below_rules", $belowRules, "Below Children Rules");
+        $belowEditor = new Editor($this->lifeCycle, "below_entries", $belowEntries, "Below Children Entries");
         $belowEditor->setHeight(300);
-        $view->setTemplateVar("below_rules", $belowEditor->export());
+        $view->setTemplateVar("below_entries", $belowEditor->export());
 
-        $rulesContainer = new RulesContainer($this->lifeCycle, $childrenRules, $this->rule);
-        $view->setTemplateVar("rules", $rulesContainer->export());
+        $entriesContainer = new EntriesContainer($this->lifeCycle, $childrenEntries, $this->rule);
+        $view->setTemplateVar("entries", $entriesContainer->export());
 
         $view->setTemplateVar("action", $this->action);
         if($parent)

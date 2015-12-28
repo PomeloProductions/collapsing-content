@@ -9,22 +9,22 @@
 namespace CollapsingContent\Admin\View;
 
 
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Model\Entry;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\LifeCycle;
 
-class RulesContainer extends ViewCollection {
+class EntriesContainer extends ViewCollection {
 
     /**
      * @param LifeCycle $lifeCycle
-     * @param Rule[] $rules
-     * @param Rule|null $parent the parent Rule
+     * @param Entry[] $rules
+     * @param Entry|null $parent the parent Rule
      */
-    public function __construct(LifeCycle $lifeCycle, $rules, Rule $parent = null) {
+    public function __construct(LifeCycle $lifeCycle, $rules, Entry $parent = null) {
         parent::__construct($lifeCycle, "admin/rules_container");
 
         foreach($rules as $rule) {
-            $view = new RuleTR($this->lifeCycle, $rule->id, $rule->title);
+            $view = new EntryTR($this->lifeCycle, $rule->id, $rule->title);
 
             $this->addChildView("rules", $view);
         }

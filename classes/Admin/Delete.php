@@ -9,7 +9,7 @@
 namespace CollapsingContent\Admin;
 
 
-use CollapsingContent\Model\Rule;
+use CollapsingContent\Model\Entry;
 use WordWrap\Admin\TaskController;
 
 class Delete extends TaskController {
@@ -22,16 +22,16 @@ class Delete extends TaskController {
         $id = isset($_GET["id"]) ? $_GET["id"] : false;
 
         if(!$id)
-            header("Location: admin.php?page=rules_regulations&task=view_rules");
+            header("Location: admin.php?page=collapsing_content&task=view_entries");
 
-        $rule = Rule::find_one($id);
+        $rule = Entry::find_one($id);
 
         $rule->delete();
 
         if($rule->getParent())
-            header("Location: admin.php?page=rules_regulations&task=edit_rule&id=" . $rule->getParent()->id);
+            header("Location: admin.php?page=collapsing_content&task=edit_entry&id=" . $rule->getParent()->id);
         else
-            header("Location: admin.php?page=rules_regulations&task=view_rules");
+            header("Location: admin.php?page=collapsing_content&task=view_entries");
     }
 
     /**
