@@ -17,16 +17,16 @@ class EntriesContainer extends ViewCollection {
 
     /**
      * @param LifeCycle $lifeCycle
-     * @param Entry[] $rules
-     * @param Entry|null $parent the parent Rule
+     * @param Entry[] $entries
+     * @param Entry|null $parent the parent Entry
      */
-    public function __construct(LifeCycle $lifeCycle, $rules, Entry $parent = null) {
-        parent::__construct($lifeCycle, "admin/rules_container");
+    public function __construct(LifeCycle $lifeCycle, $entries, Entry $parent = null) {
+        parent::__construct($lifeCycle, "admin/entries_container");
 
-        foreach($rules as $rule) {
-            $view = new EntryTR($this->lifeCycle, $rule->id, $rule->title);
+        foreach($entries as $entry) {
+            $view = new EntryTR($this->lifeCycle, $entry->id, $entry->title);
 
-            $this->addChildView("rules", $view);
+            $this->addChildView("entries", $view);
         }
 
         if($parent != null)
