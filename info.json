@@ -1,6 +1,6 @@
 {
   "pluginName" : "collapsing-content",
-  "rootNameSpace" : "Collapsing Content",
+  "rootNameSpace" : "CollapsingContent",
   "LifeCycle" : {
     "className" : "Plugin",
     "AssetLocation" : [
