@@ -6,10 +6,10 @@
  * Time: 2:18 AM
  */
 
-namespace CoillapsingContent\Admin;
+namespace CollapsingContent\Admin;
 
 
-use CoillapsingContent\Model\Rule;
+use CollapsingContent\Model\Rule;
 use WordWrap\Admin\TaskController;
 
 class Delete extends TaskController {

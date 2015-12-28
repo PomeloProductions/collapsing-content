@@ -6,7 +6,7 @@
  * Time: 5:22 PM
  */
 
-namespace CoillapsingContent\Model;
+namespace CollapsingContent\Model;
 
 
 use DateTime;

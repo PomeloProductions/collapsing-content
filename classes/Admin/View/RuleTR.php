@@ -1,6 +1,6 @@
 <?php
 
-namespace CoillapsingContent\Admin\View;
+namespace CollapsingContent\Admin\View;
 use WordWrap\Assets\View\View;
 
 /**

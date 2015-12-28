@@ -9,7 +9,7 @@
    License: GPLv3
   */
 
-namespace CoillapsingContent;
+namespace CollapsingContent;
 
 function has_word_wrap() {
     if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( 'word-wrap/word-wrap.php' ) ) {

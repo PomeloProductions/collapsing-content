@@ -1,7 +1,7 @@
 <?php
-namespace CoillapsingContent;
+namespace CollapsingContent;
 
-use CoillapsingContent\Model\Rule;
+use CollapsingContent\Model\Rule;
 use WordWrap\LifeCycle;
 
 class Plugin extends LifeCycle {

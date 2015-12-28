@@ -1,7 +1,7 @@
 <?php
-namespace CoillapsingContent\Admin;
-use CoillapsingContent\Admin\View\RulesContainer;
-use CoillapsingContent\Model\Rule;
+namespace CollapsingContent\Admin;
+use CollapsingContent\Admin\View\RulesContainer;
+use CollapsingContent\Model\Rule;
 use WordWrap\Admin\TaskController;
 
 /**
