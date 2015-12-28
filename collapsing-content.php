@@ -29,7 +29,7 @@ function child_plugin_notice(){
 }
 
 function autoload($className) {
-    $fileName = str_replace("RulesRegulations\\", "", $className);
+    $fileName = str_replace("CollapsingContent\\", "", $className);
     $fileName = str_replace("\\", "/", $fileName);
     if(file_exists(__DIR__ . "/classes/" . $fileName . ".php"))
         require(__DIR__ . "/classes/" . $fileName . ".php");
