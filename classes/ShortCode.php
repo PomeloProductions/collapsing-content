@@ -6,10 +6,10 @@
  * Time: 8:15 PM
  */
 
-namespace RulesRegulations;
+namespace CollapsingContent;
 
 
-use RulesRegulations\Model\Rule;
+use CollapsingContent\Model\Entry;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
 
@@ -21,9 +21,9 @@ class ShortCode extends ShortCodeScriptLoader{
      */
     public function handleShortcode($atts) {
 
-        $rules = Rule::fetchAll();
+        $entries = Entry::fetchAll();
 
-        $collections = $this->buildCollections($rules);
+        $collections = $this->buildCollections($entries);
 
         $exportedHTML = '';
 
@@ -34,21 +34,21 @@ class ShortCode extends ShortCodeScriptLoader{
     }
 
     /**
-     * @param $rules Rule[]
+     * @param $entries Entry[]
      * @return ViewCollection[]
      */
-    private function buildCollections($rules) {
+    private function buildCollections($entries) {
         $collections = [];
 
-        foreach($rules as $rule) {
-            $collection = new ViewCollection($this->lifeCycle, "front_end-rule");
+        foreach($entries as $entry) {
+            $collection = new ViewCollection($this->lifeCycle, "front_end-entry");
 
-            $collection->setTemplateVar("title", $rule->title);
-            $collection->setTemplateVar("top_content", $rule->top_content);
-            $collection->setTemplateVar("bottom_content", $rule->bottom_content);
+            $collection->setTemplateVar("title", $entry->title);
+            $collection->setTemplateVar("top_content", $entry->top_content);
+            $collection->setTemplateVar("bottom_content", $entry->bottom_content);
 
-            if(count($rule->getChildren()))
-                $collection->addChildViews("children", $this->buildCollections($rule->getChildren()));
+            if(count($entry->getChildren()))
+                $collection->addChildViews("children", $this->buildCollections($entry->getChildren()));
 
             $collections[] = $collection;
         }

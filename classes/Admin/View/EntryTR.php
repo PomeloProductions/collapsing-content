@@ -1,6 +1,6 @@
 <?php
 
-namespace RulesRegulations\Admin\View;
+namespace CollapsingContent\Admin\View;
 use WordWrap\Assets\View\View;
 
 /**
@@ -9,10 +9,10 @@ use WordWrap\Assets\View\View;
  * Date: 9/12/15
  * Time: 11:21 PM
  */
-class RuleTR extends View{
+class EntryTR extends View{
 
     public function __construct($lifeCycle, $id, $name) {
-        parent::__construct($lifeCycle, "admin/rule_tr");
+        parent::__construct($lifeCycle, "admin/entry_tr");
 
         $this->setTemplateVar("id", $id);
         $this->setTemplateVar("name", $name);

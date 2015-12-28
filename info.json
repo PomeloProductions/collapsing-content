@@ -1,6 +1,6 @@
 {
-  "pluginName" : "rules-regulations",
-  "rootNameSpace" : "RulesRegulations",
+  "pluginName" : "collapsing-content",
+  "rootNameSpace" : "CollapsingContent",
   "LifeCycle" : {
     "className" : "Plugin",
     "AssetLocation" : [
@@ -18,23 +18,23 @@
       ],
       "Page" : [
         {
-          "name" : "Content Folder",
+          "name" : "Collapsing Content",
           "icon" : "dashicons-carrot",
           "capability" : "manage_options",
           "position" : 21,
           "Task" : [
             {
-              "name" : "View Rules",
-              "className" : "\\Admin\\ViewRules",
+              "name" : "View Entries",
+              "className" : "\\Admin\\ViewEntries",
               "default" : true
             },
             {
-              "name" : "Edit Rule",
+              "name" : "Edit Entry",
               "className" : "\\Admin\\Edit",
               "actions" : ["edit"]
             },
             {
-              "name" : "Create Rule",
+              "name" : "Create Entry",
               "className" : "\\Admin\\Create",
               "actions" : ["create"]
             },
@@ -46,6 +46,6 @@
         }
       ]
     },
-    "optionsPrefix" : "rules_regulations"
+    "optionsPrefix" : "collapsing_content"
   }
 }

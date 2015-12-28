@@ -1,12 +1,12 @@
-<form method="post" action="admin.php?page=rules_regulations&task={{task}}{{id}}">
+<form method="post" action="admin.php?page=collapsing_content&task={{task}}{{id}}">
     <div>
         <label for="title">Title:</label>
         <input class="text_area" type="text" id="title" name="title" value="{{title}}">
     </div>
-    {{above_rules}}
-    {{rules}}
-    {{below_rules}}
+    {{above_entries}}
+    {{entries}}
+    {{below_entries}}
     <input type="hidden" value="{{action}}" name="action"/>
     <input type="hidden" value="{{parent}}" name="parent"/>
-    <input type="submit" value="Save Rule" id="save-buttom" class="button button-primary button-large">
+    <input type="submit" value="Save Entry" id="save-buttom" class="button button-primary button-large">
 </form>

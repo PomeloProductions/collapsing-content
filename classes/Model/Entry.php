@@ -6,16 +6,16 @@
  * Time: 5:22 PM
  */
 
-namespace RulesRegulations\Model;
+namespace CollapsingContent\Model;
 
 
 use DateTime;
 use WordWrap\ORM\BaseModel;
 
-class Rule extends BaseModel{
+class Entry extends BaseModel{
 
     /**
-     * @var int the primary id of this rule
+     * @var int the primary id of this entry
      */
     public $id;
 
@@ -25,27 +25,27 @@ class Rule extends BaseModel{
     public $title;
 
     /**
-     * @var string the content that goes above child rules
+     * @var string the content that goes above child entries
      */
     public $top_content;
 
     /**
-     * @var string the content that goes below child rules
+     * @var string the content that goes below child entries
      */
     public $bottom_content;
 
     /**
-     * @var int the parent id of this rule
+     * @var int the parent id of this entry
      */
     public $parent_id = null;
 
     /**
-     * @var Rule the parent instance
+     * @var Entry the parent instance
      */
     public $parent = null;
 
     /**
-     * @var Rule[] the primary id of the time line
+     * @var Entry[] the primary id of the time line
      */
     public $children = null;
 
@@ -55,28 +55,28 @@ class Rule extends BaseModel{
     public $deleted_at = null;
 
     /**
-     * @param Rule $rule to add to this instance
+     * @param Entry $entry to add to this instance
      */
-    private function addChild(Rule $rule) {
+    private function addChild(Entry $entry) {
         if($this->children == null)
             $this->children = [];
 
-        $rule->parent = $this;
-        $this->children[] = $rule;
+        $entry->parent = $this;
+        $this->children[] = $entry;
     }
 
     /**
-     * @return Rule|null the parent rule of null if none
+     * @return Entry|null the parent entry of null if none
      */
     public function getParent() {
         if($this->parent == null && $this->parent_id)
-            $this->parent = Rule::find_one($this->parent_id);
+            $this->parent = Entry::find_one($this->parent_id);
 
         return $this->parent;
     }
 
     /**
-     * @return Rule[] all children of given rule
+     * @return Entry[] all children of given entry
      */
     public function getChildren() {
 
@@ -90,7 +90,7 @@ class Rule extends BaseModel{
             $results = $wpdb->get_results($SQL, ARRAY_A);
 
             foreach ($results as $row)
-                $this->addChild(new Rule($row));
+                $this->addChild(new Entry($row));
         }
 
         return $this->children;
@@ -112,7 +112,7 @@ class Rule extends BaseModel{
      * @return string
      */
     public static function get_table(){
-        return "wp_rules_regulations_rule";
+        return "wp_collapsing_content_entry";
     }
 
     /**
@@ -141,7 +141,7 @@ class Rule extends BaseModel{
     }
 
     /**
-     * @return Rule[] all entries in the rules table
+     * @return Entry[] all entries in the entries table
      */
     public static function fetchAll(){
         $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL";
@@ -150,18 +150,18 @@ class Rule extends BaseModel{
 
         $rows = $wpdb->get_results($SQL, ARRAY_A);
 
-        $rules = [];
+        $entries = [];
         foreach($rows as $row) {
-            $rules[] = new Rule($row);
+            $entries[] = new Entry($row);
         }
 
-        $organizedRules = self::organizeRules($rules);
+        $organizedEntries = self::organizeEntries($entries);
 
-        return $organizedRules;
+        return $organizedEntries;
     }
 
     /**
-     * @return Rule[] all entries in the rules table that do not have a parent
+     * @return Entry[] all entries in the entries table that do not have a parent
      */
     public static function fetchAllParents() {
         $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
@@ -170,35 +170,35 @@ class Rule extends BaseModel{
 
         $rows = $wpdb->get_results($SQL, ARRAY_A);
 
-        $rules = [];
+        $entries = [];
         foreach($rows as $row)
-            $rules[] = new Rule($row);
+            $entries[] = new Entry($row);
 
-        return $rules;
+        return $entries;
     }
 
     /**
-     * @param Rule[] $rules
-     * @return Rule[] organizes rules
+     * @param Entry[] $entries
+     * @return Entry[] organizes entries
      */
-    private static function organizeRules(array $rules) {
-        $organizedRules = [];
+    private static function organizeEntries(array $entries) {
+        $organizedEntries = [];
 
-        foreach($rules as $rule) {
+        foreach($entries as $entry) {
 
-            if($rule->parent_id) {
-                foreach($rules as $parent) {
-                    if($parent->id == $rule->parent_id) {
-                        $parent->addChild($rule);
+            if($entry->parent_id) {
+                foreach($entries as $parent) {
+                    if($parent->id == $entry->parent_id) {
+                        $parent->addChild($entry);
                         break;
                     }
                 }
             }
 
             else
-                $organizedRules[] = $rule;
+                $organizedEntries[] = $entry;
         }
 
-        return $organizedRules;
+        return $organizedEntries;
     }
 }

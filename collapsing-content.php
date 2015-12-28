@@ -1,15 +1,15 @@
 <?php
 /*
-   Plugin Name: Rules and Regulations
+   Plugin Name: Collapsing Content
    Plugin URI: http://wordpress.org/extend/plugins/rules-regulations/
    Version: 0.1.0
    Author: Axolotl Interactive
    Description: 
-   Text Domain: rules-regulations
+   Text Domain: collapsing-content
    License: GPLv3
   */
 
-namespace RulesRegulations;
+namespace CollapsingContent;
 
 function has_word_wrap() {
     if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( 'word-wrap/word-wrap.php' ) ) {
@@ -22,14 +22,14 @@ function has_word_wrap() {
         }
     }
 }
-add_action( 'admin_init', '\RulesRegulations\has_word_wrap' );
+add_action( 'admin_init', '\CollapsingContent\has_word_wrap' );
 
 function child_plugin_notice(){
     ?><div class="error"><p>Sorry, but Child Plugin requires the Parent plugin to be installed and active.</p></div><?php
 }
 
 function autoload($className) {
-    $fileName = str_replace("RulesRegulations\\", "", $className);
+    $fileName = str_replace("CollapsingContent\\", "", $className);
     $fileName = str_replace("\\", "/", $fileName);
     if(file_exists(__DIR__ . "/classes/" . $fileName . ".php"))
         require(__DIR__ . "/classes/" . $fileName . ".php");
@@ -67,9 +67,9 @@ $minimalRequiredPhpVersion = '5.4';
 function noticePhpVersionWrong() {
     global $minimalRequiredPhpVersion;
     echo '<div class="updated fade">' .
-        __('Error: plugin "Rules Regulations" requires a newer version of PHP to be running.',  'rules-regulations').
-        '<br/>' . __('Minimal version of PHP required: ', 'rules-regulations') . '<strong>' . $minimalRequiredPhpVersion . '</strong>' .
-        '<br/>' . __('Your server\'s PHP version: ', 'rules-regulations') . '<strong>' . phpversion() . '</strong>' .
+        __('Error: plugin "Collapsing Content" requires a newer version of PHP to be running.',  'collapsing-content').
+        '<br/>' . __('Minimal version of PHP required: ', 'collapsing-content') . '<strong>' . $minimalRequiredPhpVersion . '</strong>' .
+        '<br/>' . __('Your server\'s PHP version: ', 'collapsing-content') . '<strong>' . phpversion() . '</strong>' .
         '</div>';
 }
 

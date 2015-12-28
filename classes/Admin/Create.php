@@ -6,7 +6,7 @@
  * Time: 12:57 PM
  */
 
-namespace RulesRegulations\Admin;
+namespace CollapsingContent\Admin;
 
 
 
