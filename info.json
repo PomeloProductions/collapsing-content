@@ -17,9 +17,12 @@
         {
           "type" : "css",
           "name" : "admin"
-        },{
+        }, {
           "type" : "js",
           "name" : "admin"
+        }, {
+          "type" : "mustache",
+          "name" : "mustache"
         }
       ],
       "Page" : [
