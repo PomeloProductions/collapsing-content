@@ -67,6 +67,9 @@ class Edit extends TaskController{
         else
             $this->entry->using_post = false;
 
+        if (isset($_POST["post_id"]))
+            $this->entry->post_id = $_POST["post_id"];
+
         $this->entry->save();
 
         if ($this->entry->getParent())
