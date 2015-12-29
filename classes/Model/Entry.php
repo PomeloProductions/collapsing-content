@@ -15,6 +15,13 @@ use WordWrap\ORM\BaseModel;
 class Entry extends BaseModel{
 
     /**
+     * @var string[] all available templates
+     */
+    private static $availableTemplates = [
+        "simple", "nested"
+    ];
+
+    /**
      * @var int the primary id of this entry
      */
     public $id;
@@ -109,6 +116,25 @@ class Entry extends BaseModel{
         }
 
         return $this->children;
+    }
+
+    /**
+     * @return string the template attached to this entry
+     */
+    public function getTemplate() {
+
+        if ($this->template)
+            return $this->template;
+
+        return "simple";
+    }
+
+    /**
+     * @param $template string the template we are setting
+     */
+    public function setTemplate($template) {
+        if (in_array($template, static::$availableTemplates))
+            $this->template = $template;
     }
 
     /**

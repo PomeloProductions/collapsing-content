@@ -56,6 +56,8 @@ class Edit extends TaskController{
             $this->entry->top_content = $_POST["above_entries"];
         if (isset($_POST["below_entries"]))
             $this->entry->bottom_content = $_POST["below_entries"];
+        if (isset($_POST["template"]))
+            $this->entry->setTemplate($_POST["template"]);
         if (isset($_POST["parent"]) && $_POST["parent"] != "")
             $this->entry->parent_id = $_POST["parent"];
 
