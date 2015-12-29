@@ -17,15 +17,3 @@ div#post-body-content {
 .button-secondary {
     margin: 10px 0 !important;
 }
-
-.column-id {
-    width: 20%;
-}
-
-.column-name {
-    width: 55%;
-}
-
-.column-delete {
-    width: 25%;
-}
