@@ -1,13 +1,13 @@
 <form method="post" action="admin.php?page=collapsing_content&task={{task}}{{id}}">
     <div>
+        <label for="title">Title:</label>
+        <input class="text_area" type="text" id="title" name="title" value="{{title}}">
+    </div>
+    <div>
         Selected Template:
         <select name="template" id="template-select">{{available_templates}}</select>
     </div>
     <label><input type="checkbox" name="using_post" {{using_post}}/> Display Post as Content?</label>
-    <div>
-        <label for="title">Title:</label>
-        <input class="text_area" type="text" id="title" name="title" value="{{title}}">
-    </div>
     <div class="edit-above-entries">{{above_entries}}</div>
     <div class="child-entries">{{entries}}</div>
     <div class="edit-below-entries">{{below_entries}}</div>
