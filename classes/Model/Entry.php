@@ -35,6 +35,16 @@ class Entry extends BaseModel{
     public $bottom_content;
 
     /**
+     * @var bool whether or not this entry is exclusivly using a post
+     */
+    public $using_post = true;
+
+    /**
+     * @var int the id of the post this uses if we are using a post
+     */
+    public $post_id;
+
+    /**
      * @var int the parent id of this entry
      */
     public $parent_id = null;
@@ -135,6 +145,8 @@ class Entry extends BaseModel{
             "title" => "TEXT",
             "top_content" => "TEXT",
             "bottom_content" => "TEXT",
+            "using_post" => "TINYINT(1)",
+            "post_id" => "INT(11) UNSIGNED",
             "parent_id" => "INT(11) UNSIGNED",
             "deleted_at" => "DATETIME"
         ];
