@@ -12,7 +12,7 @@
         "location" : "assets/js"
       }, {
         "type" : "mustache",
-        "name" : "assets/mustache"
+        "location" : "assets/mustache"
       }
     ],
     "Admin" : {
