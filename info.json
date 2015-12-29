@@ -10,6 +10,9 @@
       },{
         "type" : "js",
         "location" : "assets/js"
+      }, {
+        "type" : "mustache",
+        "name" : "assets/mustache"
       }
     ],
     "Admin" : {
@@ -20,9 +23,6 @@
         }, {
           "type" : "js",
           "name" : "admin"
-        }, {
-          "type" : "mustache",
-          "name" : "mustache"
         }
       ],
       "Page" : [
