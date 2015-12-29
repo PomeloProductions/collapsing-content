@@ -97,6 +97,7 @@ class Edit extends TaskController{
         $usingPost = false;
         $postSelectDisplay = "none";
         $contentEditingDisplay = "block";
+        $usingPostDisplay = "block";
 
         $childrenEntries = [];
 
@@ -129,6 +130,11 @@ class Edit extends TaskController{
             $contentEditingDisplay = "none";
         }
 
+        if (isset($this->entry) && $this->entry->template == "nested") {
+            $usingPostDisplay = "none";
+            $postSelectDisplay = "none";
+            $contentEditingDisplay = "none";
+        }
 
         if(isset($_GET["parent_id"]) && $_GET["parent_id"])
             $parent = $_GET["parent_id"];
@@ -137,6 +143,7 @@ class Edit extends TaskController{
 
         $view->setTemplateVar("post_select_display", $postSelectDisplay);
         $view->setTemplateVar("content_editing_visibility", $contentEditingDisplay);
+        $view->setTemplateVar("using_post_visibility", $usingPostDisplay);
 
         $view->setTemplateVar("title", $title);
         $view->setTemplateVar("id", $id);
