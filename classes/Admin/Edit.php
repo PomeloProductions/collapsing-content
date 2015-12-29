@@ -14,6 +14,7 @@ use CollapsingContent\Model\Entry;
 use WordWrap\Admin\TaskController;
 use WordWrap\Assets\View\Editor;
 use WordWrap\Assets\View\View;
+use WP_Query;
 
 class Edit extends TaskController{
 
@@ -84,6 +85,7 @@ class Edit extends TaskController{
         $view->setTemplateVar("task", $this->task->getSlug());
 
         $view->setTemplateVar("available_templates", $this->renderAvailableTemplates());
+        $view->setTemplateVar("available_posts", $this->renderAvailablePosts());
 
         $title = "";
         $id = "";
@@ -167,6 +169,47 @@ class Edit extends TaskController{
 
             $optionsContent.= "<option ". ($template == $selectedTemplate ? "selected" : "")
                 ." value='" . $template ."'>" . $template . "</option>";
+        }
+
+        return $optionsContent;
+    }
+
+    /**
+     * creates the html for the select options of available templates
+     * @return string options available
+     */
+    private function renderAvailablePosts() {
+
+        $args = [
+            'post_type' => ['post', 'page'],
+            'nopaging' => false,
+            'orderby' => 'title',
+            'order' => 'ASC',
+        ];
+
+        $query = new WP_Query($args);
+
+        $posts = $query->get_posts();
+
+        $availablePosts = [];
+
+        foreach ($posts as $post) {
+            $availablePosts[$post->ID] = $post->post_title;
+        }
+
+        $selectedPost = 0;
+        $optionsContent = "";
+
+        if (isset($this->entry))
+            $selectedPost = $this->entry->post_id;
+        if (isset($_POST["post_id"]))
+            $selectedPost = $_POST["post_id"];
+
+
+        foreach ($availablePosts as $id => $title) {
+
+            $optionsContent.= "<option ". ($id == $selectedPost ? "selected" : "")
+                ." value='" . $id ."'>" . $title . "</option>";
         }
 
         return $optionsContent;

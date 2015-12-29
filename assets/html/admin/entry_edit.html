@@ -10,7 +10,7 @@
     <label><input type="checkbox" name="using_post" {{using_post}}/> Display Post as Content?</label>
     <div class="select-container">
         Select Post:
-        <select name="post_id" id="post-select">{{available_posts}}</select>
+        <select name="post_id" id="post-select"><option disabled selected>Select Post</option>{{available_posts}}</select>
     </div>
     <div class="edit-above-entries">{{above_entries}}</div>
     <div class="child-entries">{{entries}}</div>
