@@ -92,6 +92,8 @@ class Edit extends TaskController{
         $aboveEntries = "";
         $belowEntries = "";
         $usingPost = false;
+        $postSelectDisplay = "none";
+        $contentEditingDisplay = "block";
 
         $childrenEntries = [];
 
@@ -119,11 +121,19 @@ class Edit extends TaskController{
         if (isset($_POST["using_post"]))
             $usingPost = $_POST["using_post"] == "on";
 
+        if ($usingPost) {
+            $postSelectDisplay = "block";
+            $contentEditingDisplay = "none";
+        }
+
 
         if(isset($_GET["parent_id"]) && $_GET["parent_id"])
             $parent = $_GET["parent_id"];
 
         $view->setTemplateVar("using_post", $usingPost ? "checked" : "");
+
+        $view->setTemplateVar("post_select_display", $postSelectDisplay);
+        $view->setTemplateVar("content_editing_visibility", $contentEditingDisplay);
 
         $view->setTemplateVar("title", $title);
         $view->setTemplateVar("id", $id);
