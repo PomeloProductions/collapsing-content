@@ -112,7 +112,7 @@ class Entry extends BaseModel{
      * @return string
      */
     public static function get_table(){
-        return "wp_collapsing_content_entry";
+        return "wp_collapsing_content_entries";
     }
 
     /**
