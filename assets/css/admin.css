@@ -17,3 +17,7 @@ div#post-body-content {
 .button-secondary {
     margin: 10px 0 !important;
 }
+
+.select-container {
+    margin: 10px 0 5px;
+}
