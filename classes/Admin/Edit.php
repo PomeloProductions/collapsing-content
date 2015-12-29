@@ -61,6 +61,11 @@ class Edit extends TaskController{
         if (isset($_POST["parent"]) && $_POST["parent"] != "")
             $this->entry->parent_id = $_POST["parent"];
 
+        if (isset($_POST["using_post"]))
+            $this->entry->using_post = $_POST["using_post"] == "on";
+        else
+            $this->entry->using_post = false;
+
         $this->entry->save();
 
         if ($this->entry->getParent())
@@ -84,6 +89,7 @@ class Edit extends TaskController{
         $id = "";
         $aboveEntries = "";
         $belowEntries = "";
+        $usingPost = false;
 
         $childrenEntries = [];
 
@@ -94,6 +100,7 @@ class Edit extends TaskController{
             $id = "&id=" . $this->entry->id;
             $aboveEntries = $this->entry->top_content;
             $belowEntries = $this->entry->bottom_content;
+            $usingPost = $this->entry->using_post;
 
             $childrenEntries = $this->entry->getChildren();
 
@@ -107,9 +114,14 @@ class Edit extends TaskController{
             $aboveEntries = $_POST["above_entries"];
         if(isset($_POST["below_entries"]))
             $belowEntries = $_POST["below_entries"];
+        if (isset($_POST["using_post"]))
+            $usingPost = $_POST["using_post"] == "on";
+
 
         if(isset($_GET["parent_id"]) && $_GET["parent_id"])
             $parent = $_GET["parent_id"];
+
+        $view->setTemplateVar("using_post", $usingPost ? "checked" : "");
 
         $view->setTemplateVar("title", $title);
         $view->setTemplateVar("id", $id);
@@ -145,6 +157,11 @@ class Edit extends TaskController{
 
         if (isset($this->entry))
             $selectedTemplate = $this->entry->getTemplate();
+        if (isset($_POST["template"]))
+            $selectedTemplate = $_POST["template"];
+
+        if (!in_array($selectedTemplate, $availableTemplates))
+            $selectedTemplate = "simple";
 
         foreach ($availableTemplates as $template) {
 
