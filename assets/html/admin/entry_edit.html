@@ -7,7 +7,7 @@
         Selected Template:
         <select name="template" id="template-select">{{available_templates}}</select>
     </div>
-    <label><input type="checkbox" id="using_post-checkbox" name="using_post" {{using_post}}/> Display Post as Content?</label>
+    <label id="using_post-container"><input type="checkbox" id="using_post-checkbox" name="using_post" {{using_post}}/> Display Post as Content?</label>
     <div class="select-container" id="post-select-container" style="display:{{post_select_display}}">
         Select Post:
         <select name="post_id" id="post-select"><option disabled selected>Select Post</option>{{available_posts}}</select>

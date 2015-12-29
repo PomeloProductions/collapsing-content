@@ -3,8 +3,9 @@
  */
 jQuery("document").ready(function() {
 
-    jQuery("#using_post-checkbox").change(function() {
-        if (jQuery(this).is(":checked")) {
+    function toggleUsingPost() {
+
+        if (jQuery("#using_post-checkbox").is(":checked")) {
             jQuery("#post-select-container").show();
             jQuery(".edit-above-entries").hide();
             jQuery(".edit-below-entries").hide()
@@ -13,5 +14,22 @@ jQuery("document").ready(function() {
             jQuery(".edit-above-entries").show();
             jQuery(".edit-below-entries").show();
         }
-    })
+    }
+
+    jQuery("#using_post-checkbox").change(toggleUsingPost);
+
+    jQuery("#template-select").change(function() {
+        if (jQuery(this).val() == "nested") {
+            jQuery("#using_post-container").hide();
+            jQuery("#post-select-container").hide();
+            jQuery(".edit-above-entries").hide();
+            jQuery(".edit-below-entries").hide();
+        }
+        else {
+
+            jQuery("#using_post-container").show();
+
+            toggleUsingPost();
+        }
+    });
 });
