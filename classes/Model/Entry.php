@@ -45,6 +45,11 @@ class Entry extends BaseModel{
     public $post_id;
 
     /**
+     * @var string the template the user has chosen
+     */
+    public $template;
+
+    /**
      * @var int the parent id of this entry
      */
     public $parent_id = null;
@@ -148,6 +153,7 @@ class Entry extends BaseModel{
             "using_post" => "TINYINT(1)",
             "post_id" => "INT(11) UNSIGNED",
             "parent_id" => "INT(11) UNSIGNED",
+            "template" => "VARCHAR(55)",
             "deleted_at" => "DATETIME"
         ];
     }
