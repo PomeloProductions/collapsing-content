@@ -10,6 +10,7 @@ namespace CollapsingContent;
 
 
 use CollapsingContent\Model\Entry;
+use WordWrap\Assets\BaseAsset;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
 
@@ -35,28 +36,42 @@ class ShortCode extends ShortCodeScriptLoader{
 
     /**
      * @param $entries Entry[]
-     * @return ViewCollection[]
+     * @return BaseAsset[]
      */
     private function buildCollections($entries) {
         $collections = [];
 
         foreach($entries as $entry) {
 
-            $templateName = "front_end/" . $entry->template . "/entry";
-
-            $collection = new ViewCollection($this->lifeCycle, $templateName);
-
-            $collection->setTemplateVar("title", $entry->title);
-            $collection->setTemplateVar("top_content", $entry->top_content);
-            $collection->setTemplateVar("bottom_content", $entry->bottom_content);
-
-            if(count($entry->getChildren()))
-                $collection->addChildViews("children", $this->buildCollections($entry->getChildren()));
-
-            $collections[] = $collection;
+            switch($entry->template) {
+                case "nested":
+                    break;
+                case "simple":
+                    $collections[] = $this->buildSimpleTemplate($entry);
+                    break;
+            }
         }
 
         return $collections;
+    }
+
+    /**
+     * Builds an instance of a simple template
+     * @param $entry Entry for the template
+     * @return ViewCollection the build template
+     */
+    private function buildSimpleTemplate($entry) {
+
+        $collection = new ViewCollection($this->lifeCycle, "front_end-entry");
+
+        $collection->setTemplateVar("title", $entry->title);
+        $collection->setTemplateVar("top_content", $entry->top_content);
+        $collection->setTemplateVar("bottom_content", $entry->bottom_content);
+
+        if(count($entry->getChildren()))
+            $collection->addChildViews("children", $this->buildCollections($entry->getChildren()));
+
+        return $collection;
     }
 
     /**
