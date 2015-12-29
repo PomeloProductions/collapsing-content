@@ -1,8 +1,8 @@
-.wp-list-table tbody tr:nth-child(odd) {
+.collapsing-content-table tbody tr:nth-child(odd) {
     background: #eee;
 }
 
-.wp-list-table tbody tr:nth-child(even) {
+.collapsing-content-table tbody tr:nth-child(even) {
     background: white;
 }
 
