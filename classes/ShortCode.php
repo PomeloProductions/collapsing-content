@@ -41,7 +41,10 @@ class ShortCode extends ShortCodeScriptLoader{
         $collections = [];
 
         foreach($entries as $entry) {
-            $collection = new ViewCollection($this->lifeCycle, "front_end-entry");
+
+            $templateName = "front_end/" . $entry->template . "/entry";
+
+            $collection = new ViewCollection($this->lifeCycle, $templateName);
 
             $collection->setTemplateVar("title", $entry->title);
             $collection->setTemplateVar("top_content", $entry->top_content);

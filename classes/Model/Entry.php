@@ -47,7 +47,7 @@ class Entry extends BaseModel{
     /**
      * @var string the template the user has chosen
      */
-    public $template;
+    public $template = "simple";
 
     /**
      * @var int the parent id of this entry
