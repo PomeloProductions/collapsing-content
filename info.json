@@ -7,12 +7,18 @@
       {
         "type" : "css",
         "location" : "assets/css"
+      },{
+        "type" : "js",
+        "location" : "assets/js"
       }
     ],
     "Admin" : {
       "RequiredAssets" : [
         {
           "type" : "css",
+          "name" : "admin"
+        },{
+          "type" : "js",
           "name" : "admin"
         }
       ],
