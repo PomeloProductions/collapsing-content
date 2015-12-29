@@ -78,6 +78,8 @@ class Edit extends TaskController{
 
         $view->setTemplateVar("task", $this->task->getSlug());
 
+        $view->setTemplateVar("available_templates", $this->renderAvailableTemplates());
+
         $title = "";
         $id = "";
         $aboveEntries = "";
@@ -129,6 +131,28 @@ class Edit extends TaskController{
 
         return $view->export();
 
+    }
+
+    /**
+     * creates the html for the select options of available templates
+     * @return string options available
+     */
+    private function renderAvailableTemplates() {
+
+        $availableTemplates = Entry::$availableTemplates;
+        $selectedTemplate = "simple";
+        $optionsContent = "";
+
+        if (isset($this->entry))
+            $selectedTemplate = $this->entry->getTemplate();
+
+        foreach ($availableTemplates as $template) {
+
+            $optionsContent.= "<option ". ($template == $selectedTemplate ? "selected" : "")
+                ." value='" . $template ."'>" . $template . "</option>";
+        }
+
+        return $optionsContent;
     }
 
     /**

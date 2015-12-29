@@ -17,7 +17,7 @@ class Entry extends BaseModel{
     /**
      * @var string[] all available templates
      */
-    private static $availableTemplates = [
+    public static $availableTemplates = [
         "simple", "nested"
     ];
 
