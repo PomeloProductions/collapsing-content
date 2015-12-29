@@ -10,7 +10,9 @@ namespace CollapsingContent;
 
 
 use CollapsingContent\Model\Entry;
+use stdClass;
 use WordWrap\Assets\BaseAsset;
+use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\Assets\View\ViewCollection;
 use WordWrap\ShortCodeScriptLoader;
 
@@ -45,6 +47,7 @@ class ShortCode extends ShortCodeScriptLoader{
 
             switch($entry->template) {
                 case "nested":
+                    $collections[] = $this->buildNestedTemplate($entry);
                     break;
                 case "simple":
                     $collections[] = $this->buildSimpleTemplate($entry);
@@ -72,6 +75,35 @@ class ShortCode extends ShortCodeScriptLoader{
             $collection->addChildViews("children", $this->buildCollections($entry->getChildren()));
 
         return $collection;
+    }
+
+    /**
+     * @param $entry Entry for which we are building our nested template
+     * @return MustacheTemplate the created template
+     */
+    private function buildNestedTemplate($entry) {
+
+        $data = new stdClass();
+        $data->children = [];
+
+        foreach ($entry->getChildren() as $child) {
+
+            $childData = new stdClass();
+
+            $childData->title = $child->title;
+
+            if ($child->using_post) {
+                $childData->content = apply_filters("collapsing_content-post", $child->post_id);
+            } else {
+                $childData->above_content = $child->top_content;
+                $childData->bottom_content = $child->bottom_content;
+            }
+
+            $data->children[] = $childData;
+        }
+
+        return new MustacheTemplate($this->lifeCycle, "nested", $data);
+
     }
 
     /**
