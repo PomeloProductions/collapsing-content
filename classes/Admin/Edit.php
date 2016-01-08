@@ -202,7 +202,7 @@ class Edit extends TaskController{
 
         $args = [
             'post_type' => ['post', 'page'],
-            'nopaging' => false,
+            'nopaging' => true,
             'orderby' => 'title',
             'order' => 'ASC',
         ];
