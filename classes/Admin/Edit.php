@@ -53,6 +53,8 @@ class Edit extends TaskController{
 
         if (isset($_POST["title"]))
             $this->entry->title = $_POST["title"];
+        if (isset($_POST["subtitle"]))
+            $this->entry->subtitle = $_POST["subtitle"];
         if (isset($_POST["above_entries"]))
             $this->entry->top_content = $_POST["above_entries"];
         if (isset($_POST["below_entries"]))
@@ -91,6 +93,7 @@ class Edit extends TaskController{
         $view->setTemplateVar("available_posts", $this->renderAvailablePosts());
 
         $title = "";
+        $subtitle = "";
         $id = "";
         $aboveEntries = "";
         $belowEntries = "";
@@ -105,6 +108,7 @@ class Edit extends TaskController{
 
         if(isset($this->entry)) {
             $title = $this->entry->title;
+            $subtitle = $this->entry->subtitle;
             $id = "&id=" . $this->entry->id;
             $aboveEntries = $this->entry->top_content;
             $belowEntries = $this->entry->bottom_content;
@@ -118,6 +122,8 @@ class Edit extends TaskController{
 
         if(isset($_POST["title"]))
             $title = $_POST["title"];
+        if(isset($_POST["subtitle"]))
+            $subtitle = $_POST["subtitle"];
         if(isset($_POST["above_entries"]))
             $aboveEntries = $_POST["above_entries"];
         if(isset($_POST["below_entries"]))
@@ -146,6 +152,7 @@ class Edit extends TaskController{
         $view->setTemplateVar("using_post_visibility", $usingPostDisplay);
 
         $view->setTemplateVar("title", $title);
+        $view->setTemplateVar("subtitle", $subtitle);
         $view->setTemplateVar("id", $id);
 
         $aboveEditor = new Editor($this->lifeCycle, "above_entries", $aboveEntries, "Above Children Entries");
