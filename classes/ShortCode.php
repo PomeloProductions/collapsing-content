@@ -24,7 +24,10 @@ class ShortCode extends ShortCodeScriptLoader{
      */
     public function handleShortcode($atts) {
 
-        $entries = Entry::fetchAll();
+        if (!isset($atts["id"]))
+            $entries = Entry::fetchAll();
+        else
+            $entries = [Entry::find_one($atts["id"])];
 
         $collections = $this->buildCollections($entries);
 
