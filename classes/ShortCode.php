@@ -94,6 +94,7 @@ class ShortCode extends ShortCodeScriptLoader{
             $childData = new stdClass();
 
             $childData->title = $child->title;
+            $childData->subtitle = $child->subtitle;
 
             if ($child->using_post) {
                 $childData->content = apply_filters("collapsing_content-post", $child->post_id);
