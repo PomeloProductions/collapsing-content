@@ -32,6 +32,11 @@ class Entry extends BaseModel{
     public $title;
 
     /**
+     * @var string the subtitle of this entry
+     */
+    public $subtitle;
+
+    /**
      * @var string the content that goes above child entries
      */
     public $top_content;
@@ -174,6 +179,7 @@ class Entry extends BaseModel{
     public static function get_fields() {
         return [
             "title" => "TEXT",
+            "subtitle" => "TEXT",
             "top_content" => "TEXT",
             "bottom_content" => "TEXT",
             "using_post" => "TINYINT(1)",
