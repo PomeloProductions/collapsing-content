@@ -69,14 +69,6 @@ class Plugin extends LifeCycle {
     }
 
 
-    /**
-     * Perform actions when upgrading from version X to version Y
-     * See: http://plugin.michael-simpson.com/?page_id=35
-     * @return void
-     */
-    public function upgrade() {
-    }
-
     protected function addSettingsSubMenuPageToPluginsMenu() {
         $this->requireExtraPluginFiles();
         $displayName = $this->getPluginDisplayName();
