@@ -251,4 +251,36 @@ class Entry extends BaseModel{
 
         return $organizedEntries;
     }
+
+    /**
+     * Overwrite this in your concrete class. Returns the table name used to
+     * store models of this class.
+     *
+     * @return string the table name without a prefix
+     */
+    public static function getTableName()
+    {
+        // TODO: Implement getTableName() method.
+    }
+
+    /**
+     * Get an array of fields to search during a search query.
+     *
+     * @return array
+     */
+    public static function getSearchableFields()
+    {
+        // TODO: Implement getSearchableFields() method.
+    }
+
+    /**
+     * Get an array of all fields for this Model with a key and a value
+     * The key should be the name of the column in the database and the value should be the structure of it
+     *
+     * @return array
+     */
+    public static function getFields()
+    {
+        // TODO: Implement getFields() method.
+    }
 }
