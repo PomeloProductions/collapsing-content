@@ -11,6 +11,8 @@
 
 namespace CollapsingContent;
 
+use WordWrap;
+
 function has_word_wrap() {
     if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( 'word-wrap/word-wrap.php' ) ) {
         add_action( 'admin_notices', 'child_plugin_notice' );
@@ -110,5 +112,5 @@ i18n_init();
 if (PhpVersionCheck()) {
     // Only load and run the init function if we know PHP version can parse it
     include_once(__DIR__ . '/../word-wrap/word-wrap.php');
-    WordWrap_init(basename(__DIR__));
+    WordWrap::init(basename(__DIR__));
 }
