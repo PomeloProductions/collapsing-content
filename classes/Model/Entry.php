@@ -157,7 +157,7 @@ class Entry extends BaseModel{
      *
      * @return string
      */
-    public static function get_table(){
+    public static function getTableName(){
         return "wp_collapsing_content_entries";
     }
 
@@ -166,7 +166,7 @@ class Entry extends BaseModel{
      *
      * @return array
      */
-    public static function get_searchable_fields() {
+    public static function getSearchableFields() {
         // TODO: Implement get_searchable_fields() method.
     }
 
@@ -176,7 +176,7 @@ class Entry extends BaseModel{
      *
      * @return array
      */
-    public static function get_fields() {
+    public static function getFields() {
         return [
             "title" => "TEXT",
             "subtitle" => "TEXT",
@@ -194,7 +194,7 @@ class Entry extends BaseModel{
      * @return Entry[] all entries in the entries table
      */
     public static function fetchAll(){
-        $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL";
+        $SQL = "SELECT * FROM `" . static::getTableName() . "` WHERE `deleted_at` IS NULL";
 
         global $wpdb;
 
@@ -214,7 +214,7 @@ class Entry extends BaseModel{
      * @return Entry[] all entries in the entries table that do not have a parent
      */
     public static function fetchAllParents() {
-        $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
+        $SQL = "SELECT * FROM `" . static::getTableName() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
 
         global $wpdb;
 
@@ -250,37 +250,5 @@ class Entry extends BaseModel{
         }
 
         return $organizedEntries;
-    }
-
-    /**
-     * Overwrite this in your concrete class. Returns the table name used to
-     * store models of this class.
-     *
-     * @return string the table name without a prefix
-     */
-    public static function getTableName()
-    {
-        // TODO: Implement getTableName() method.
-    }
-
-    /**
-     * Get an array of fields to search during a search query.
-     *
-     * @return array
-     */
-    public static function getSearchableFields()
-    {
-        // TODO: Implement getSearchableFields() method.
-    }
-
-    /**
-     * Get an array of all fields for this Model with a key and a value
-     * The key should be the name of the column in the database and the value should be the structure of it
-     *
-     * @return array
-     */
-    public static function getFields()
-    {
-        // TODO: Implement getFields() method.
     }
 }
