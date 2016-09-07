@@ -45,6 +45,10 @@ class Plugin extends LifeCycle {
         return 'collapsing-content.php';
     }
 
+    protected function getPluginDir() {
+        return dirname(__FILE__);
+    }
+
     /**
      * See: http://plugin.michael-simpson.com/?page_id=101
      * Called by install() to create any database tables if needed.
