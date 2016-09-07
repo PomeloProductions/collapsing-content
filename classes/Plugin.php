@@ -84,7 +84,7 @@ class Plugin extends LifeCycle {
             array(&$this, 'settingsPage'));
     }
 
-    public function addActionsAndFilters() {
+    public function onInitActionsAndFilters() {
 
         // Add options administration page
         // http://plugin.michael-simpson.com/?page_id=47
@@ -114,7 +114,8 @@ class Plugin extends LifeCycle {
         // Register short codes
         // http://plugin.michael-simpson.com/?page_id=39
         $sc = new ShortCode($this);
-        $sc->register('collapsing_content');
+        $sc->register('rules_regulations');
+//        $sc->register('collapsing_content');
 
 
         // Register AJAX hooks
