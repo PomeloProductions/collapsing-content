@@ -45,6 +45,10 @@ class Plugin extends LifeCycle {
         return 'collapsing-content.php';
     }
 
+    protected function getPluginDir() {
+        return dirname(__FILE__);
+    }
+
     /**
      * See: http://plugin.michael-simpson.com/?page_id=101
      * Called by install() to create any database tables if needed.
@@ -68,14 +72,6 @@ class Plugin extends LifeCycle {
         //        $wpdb->query("DROP TABLE IF EXISTS `$tableName`");
     }
 
-
-    /**
-     * Perform actions when upgrading from version X to version Y
-     * See: http://plugin.michael-simpson.com/?page_id=35
-     * @return void
-     */
-    public function upgrade() {
-    }
 
     protected function addSettingsSubMenuPageToPluginsMenu() {
         $this->requireExtraPluginFiles();
