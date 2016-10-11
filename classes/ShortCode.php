@@ -14,9 +14,9 @@ use stdClass;
 use WordWrap\Assets\BaseAsset;
 use WordWrap\Assets\Template\Mustache\MustacheTemplate;
 use WordWrap\Assets\View\ViewCollection;
-use WordWrap\ShortCodeScriptLoader;
+use WordWrap\ShortCodeLoader;
 
-class ShortCode extends ShortCodeScriptLoader{
+class ShortCode extends ShortCodeLoader{
 
     /**
      * @param  $atts array inputs
@@ -118,5 +118,10 @@ class ShortCode extends ShortCodeScriptLoader{
      */
     public function addScript() {
         // TODO: Implement addScript() method.
+    }
+
+    public function onShortcode($atts)
+    {
+        // TODO: Implement onShortcode() method.
     }
 }
