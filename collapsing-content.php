@@ -2,7 +2,7 @@
 /*
    Plugin Name: Collapsing Content
    Plugin URI: http://wordpress.org/extend/plugins/rules-regulations/
-   Version: 0.6.2
+   Version: 0.7.0
    Author: Axolotl Interactive
    Description: 
    Text Domain: collapsing-content
