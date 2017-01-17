@@ -2,7 +2,6 @@
   "pluginName" : "collapsing-content",
   "rootNameSpace" : "CollapsingContent",
   "LifeCycle" : {
-    "className" : "Plugin",
     "AssetLocation" : [
       {
         "type" : "css",
@@ -13,6 +12,10 @@
       }, {
         "type" : "mustache",
         "location" : "assets/mustache"
+      },
+      {
+        "type" : "html",
+        "location" : "assets/html"
       }
     ],
     "ShortCode": [
