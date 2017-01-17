@@ -24,17 +24,20 @@ class ShortCode extends ShortCodeLoader{
      */
     public function handleShortcode($atts) {
 
-        if (!isset($atts["id"]))
+        if (!isset($atts["id"])) {
             $entries = Entry::fetchAll();
-        else
+        }
+        else {
             $entries = [Entry::find_one($atts["id"])];
+        }
 
         $collections = $this->buildCollections($entries);
 
         $exportedHTML = '';
 
-        foreach($collections as $collection)
-            $exportedHTML.= $collection->export();
+        foreach($collections as $collection) {
+            $exportedHTML .= $collection->export();
+        }
 
         return $exportedHTML;
     }
