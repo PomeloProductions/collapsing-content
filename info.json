@@ -15,6 +15,12 @@
         "location" : "assets/mustache"
       }
     ],
+    "ShortCode": [
+      {
+        "name": "collapsing_content",
+        "className": "ShortCode"
+      }
+    ],
     "Model" : [
       {
         "className": "Model\\Entry"
