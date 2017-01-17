@@ -110,7 +110,7 @@ class Entry extends BaseModel{
         if($this->children == null) {
             $this->children = [];
 
-            $SQL = "SELECT * FROM `" . static::get_table() . "` WHERE `deleted_at` IS NULL AND `parent_id` = " . $this->id;
+            $SQL = "SELECT * FROM `" . static::getFullTableName() . "` WHERE `deleted_at` IS NULL AND `parent_id` = " . $this->id;
 
             global $wpdb;
 
@@ -158,7 +158,7 @@ class Entry extends BaseModel{
      * @return string
      */
     public static function getTableName(){
-        return "wp_collapsing_content_entries";
+        return "collapsing_content_entries";
     }
 
     /**
@@ -194,7 +194,7 @@ class Entry extends BaseModel{
      * @return Entry[] all entries in the entries table
      */
     public static function fetchAll(){
-        $SQL = "SELECT * FROM `" . static::getTableName() . "` WHERE `deleted_at` IS NULL";
+        $SQL = "SELECT * FROM `" . static::getFullTableName() . "` WHERE `deleted_at` IS NULL";
 
         global $wpdb;
 
@@ -214,7 +214,7 @@ class Entry extends BaseModel{
      * @return Entry[] all entries in the entries table that do not have a parent
      */
     public static function fetchAllParents() {
-        $SQL = "SELECT * FROM `" . static::getTableName() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
+        $SQL = "SELECT * FROM `" . static::getFullTableName() . "` WHERE `deleted_at` IS NULL AND `parent_id` IS NULL";
 
         global $wpdb;
 
