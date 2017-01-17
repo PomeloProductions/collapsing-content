@@ -15,6 +15,11 @@
         "location" : "assets/mustache"
       }
     ],
+    "Model" : [
+      {
+        "className": "Model\\Entry"
+      }
+    ],
     "Admin" : {
       "RequiredAssets" : [
         {
