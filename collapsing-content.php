@@ -15,7 +15,7 @@ use WordWrap;
 
 function hasWordWrap() {
     if ( is_admin() && current_user_can( 'activate_plugins' ) &&  !is_plugin_active( 'word-wrap/word-wrap.php' ) ) {
-        add_action( 'admin_notices', '\ElegantSlider\showInstallErrorMessage' );
+        add_action( 'admin_notices', '\CollapsingContent\showInstallErrorMessage' );
 
         deactivate_plugins( plugin_basename( __FILE__ ) );
 
@@ -24,7 +24,7 @@ function hasWordWrap() {
         }
     }
 }
-add_action( 'admin_init', '\ElegantSlider\hasWordWrap' );
+add_action( 'admin_init', '\CollapsingContent\hasWordWrap' );
 
 function showInstallErrorMessage(){
     echo '<div class="error"><p>Sorry, but Elegant Slider requires Word Wrap to be installed and active.</p></div>';
