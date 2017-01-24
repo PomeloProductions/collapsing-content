@@ -27,7 +27,7 @@ function hasWordWrap() {
 add_action( 'admin_init', '\CollapsingContent\hasWordWrap' );
 
 function showInstallErrorMessage(){
-    echo '<div class="error"><p>Sorry, but Elegant Slider requires Word Wrap to be installed and active.</p></div>';
+    echo '<div class="error"><p>Sorry, but Collapsing Content requires Word Wrap to be installed and active.</p></div>';
 }
 
 function autoload($className) {
