@@ -2,7 +2,7 @@
 /*
    Plugin Name: Collapsing Content
    Plugin URI: http://wordpress.org/extend/plugins/rules-regulations/
-   Version: 0.7.0
+   Version: 0.8.0
    Author: Axolotl Interactive
    Description: Plugin for adding open and closing content to a site
    Text Domain: collapsing-content
