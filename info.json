@@ -1,6 +1,8 @@
 {
   "pluginName" : "collapsing-content",
   "rootNameSpace" : "CollapsingContent",
+  "displayName" : "Collapsing Content",
+  "minPHPVersion" : "7.0.0",
   "LifeCycle" : {
     "AssetLocation" : [
       {
