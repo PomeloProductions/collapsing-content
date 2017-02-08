@@ -158,7 +158,7 @@ class Entry extends BaseModel{
      * @return string
      */
     public static function getTableName(){
-        return "collapsing_content_entries";
+        return "entries";
     }
 
     /**
