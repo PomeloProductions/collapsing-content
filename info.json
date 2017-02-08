@@ -3,8 +3,8 @@
   "rootNameSpace" : "CollapsingContent",
   "displayName" : "Collapsing Content",
   "minPHPVersion" : "7.0.0",
-  "databaseNameSpace" : "collapsing_content",
   "LifeCycle" : {
+    "databaseNameSpace" : "collapsing_content",
     "AssetLocation" : [
       {
         "type" : "css",
